@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Code, Briefcase, Mail } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,12 +8,12 @@ export default function Footer() {
     {
       label: 'GitHub',
       href: 'https://github.com/yourusername',
-      icon: Github,
+      icon: Code,
     },
     {
       label: 'LinkedIn',
       href: 'https://linkedin.com/in/yourusername',
-      icon: Linkedin,
+      icon: Briefcase,
     },
     {
       label: 'Email',

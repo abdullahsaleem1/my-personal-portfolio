@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
+import { Code, Briefcase, Mail, ChevronDown } from 'lucide-react';
 
 export default function Hero() {
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function Hero() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: 'easeOut',
+        ease: 'easeOut' as const,
       },
     },
   };
@@ -45,11 +45,11 @@ export default function Hero() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.4,
+        staggerChildren: 0.05 as const,
+        delayChildren: 0.4 as const,
       },
     },
-  };
+  } as const;
 
   const letterVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -159,12 +159,12 @@ export default function Hero() {
           <div className="flex gap-4">
             {[
               {
-                icon: Github,
+                icon: Code,
                 href: 'https://github.com/yourusername',
                 label: 'GitHub',
               },
               {
-                icon: Linkedin,
+                icon: Briefcase,
                 href: 'https://linkedin.com/in/yourusername',
                 label: 'LinkedIn',
               },
