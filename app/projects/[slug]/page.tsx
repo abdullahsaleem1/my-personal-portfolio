@@ -16,21 +16,23 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const project = getProject(params.slug);
+  const { slug } = await params;
+  const project = getProject(slug);
   return {
     title: project.title,
     description: project.tagline,
   };
 }
 
-export default function CaseStudyPage({
+export default async function CaseStudyPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const project = getProject(params.slug);
+  const { slug } = await params;
+  const project = getProject(slug);
   const allProjects = getAllProjects();
   const currentIndex = allProjects.findIndex((p) => p.slug === project.slug);
   const nextProject = allProjects[currentIndex + 1];
