@@ -1,0 +1,98 @@
+---
+title: Smart Vehicle Identification System
+tagline: Real-time vehicle detection and classification using Python and machine learning
+description: Developed an AI-powered system that identifies and tracks vehicles in real-time using OpenCV and deep learning models. Achieved 92% accuracy on test data.
+stack: [Python, OpenCV, TensorFlow, NumPy, Pandas]
+tags: [Python, AI/ML]
+status: live
+featured: true
+github: https://github.com/yourusername/vehicle-identification
+date: 2024-10-20
+---
+
+## The Problem
+
+Traffic monitoring and parking management systems needed an automated way to detect and classify vehicles. Manual monitoring was labor-intensive and error-prone. Existing solutions were expensive and not customizable.
+
+## My Role
+
+I developed the entire machine learning pipeline from data collection to deployment:
+- Dataset creation and annotation
+- Model training and optimization
+- Real-time inference optimization
+- Performance benchmarking
+
+## Technical Decisions
+
+### Why Python + OpenCV?
+
+- **OpenCV**: Industry standard for computer vision tasks
+- **TensorFlow**: Access to pre-trained models (YOLOv8, Faster R-CNN)
+- **Flexibility**: Easy to experiment and iterate
+
+### Architecture
+
+├── data/
+│   ├── raw/          Raw video feeds
+│   └── processed/    Annotated frames
+├── models/
+│   ├── yolov8.weights
+│   └── config.cfg
+├── inference.py      Real-time detection
+├── train.py          Model fine-tuning
+└── utils.py          Helper functions
+
+## Hardest Challenge
+
+**Challenge**: Real-time processing on limited hardware while maintaining 90%+ accuracy.
+
+**Solution**:
+I implemented frame skipping and multi-threading to process video efficiently:
+
+```python
+import threading
+from collections import deque
+
+class VehicleDetector:
+    def __init__(self, model_path):
+        self.net = cv2.dnn.readNet(model_path)
+        self.results_queue = deque(maxlen=10)
+    
+    def detect_vehicles(self, frame):
+        blob = cv2.dnn.blobFromImage(frame, 1/255, (416, 416))
+        self.net.setInput(blob)
+        outputs = self.net.forward()
+        return self.parse_outputs(outputs)
+    
+    def process_video(self, video_path):
+        cap = cv2.VideoCapture(video_path)
+        frame_count = 0
+        
+        while True:
+            ret, frame = cap.read()
+            if not ret:
+                break
+            
+            # Process every 3rd frame for speed
+            if frame_count % 3 == 0:
+                detections = self.detect_vehicles(frame)
+                self.results_queue.append(detections)
+            
+            frame_count += 1
+```
+
+## Results
+
+- **92% accuracy** on test dataset (1,200 annotated images)
+- **30 FPS** processing speed on standard CPU
+- **5+ vehicle classes** detected: cars, trucks, motorcycles, buses, vans
+- **Deployment ready** with REST API endpoint
+
+## What I Learned
+
+1. **Data quality** > model complexity — good data beats fancy models
+2. **Optimization** matters — premature optimization is the root of all evil, but performance constraints are real
+3. **Version control for data** is as important as code versioning
+4. **Testing ML models** requires different thinking than traditional software testing
+
+This project solidified my passion for machine learning and AI applications in solving real-world problems.
