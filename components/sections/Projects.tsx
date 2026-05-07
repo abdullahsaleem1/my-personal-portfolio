@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ExternalLink, Code } from 'lucide-react';
+import { Code } from 'lucide-react';
 
 export default function Projects() {
   const [filter, setFilter] = useState('All');
@@ -15,7 +15,7 @@ export default function Projects() {
       category: 'Laravel/PHP',
       tags: ['Laravel', 'PHP', 'MySQL', 'HTML/CSS'],
       image: '/projects/property-management.jpg',
-      slug: 'property-management',
+      slug: 'property-management-system',
       featured: true,
       github: '#',
       live: '#',
@@ -26,20 +26,9 @@ export default function Projects() {
       category: 'Python',
       tags: ['Python', 'OpenCV', 'Machine Learning'],
       image: '/projects/vehicle-identification.jpg',
-      slug: 'vehicle-identification',
+      slug: 'smart-vehicle-identification',
       featured: true,
       github: '#',
-    },
-    {
-      title: 'Task Manager (MERN)',
-      tagline: 'Full-stack task management application',
-      category: 'MERN',
-      tags: ['React', 'Node.js', 'MongoDB', 'Express'],
-      image: '/projects/task-manager.jpg',
-      slug: 'task-manager',
-      featured: false,
-      github: '#',
-      live: '#',
     },
   ];
 

@@ -2,7 +2,17 @@ import { Resend } from 'resend';
 
 export async function POST(request: Request) {
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const apiKey = process.env.RESEND_API_KEY;
+    const fromEmail = process.env.RESEND_FROM_EMAIL;
+
+    if (!apiKey || !fromEmail) {
+      return Response.json(
+        { error: 'Missing email configuration' },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(apiKey);
     const { name, email, subject, message } = await request.json();
 
     // Validate
@@ -15,7 +25,7 @@ export async function POST(request: Request) {
 
     // Send email
     const response = await resend.emails.send({
-      from: 'portfolio@yourdomain.com', // Replace with your Resend email
+      from: fromEmail,
       to: 'iamabdullahsaleem1@gmail.com',
       subject: `Portfolio Contact: ${subject} from ${name}`,
       html: `
