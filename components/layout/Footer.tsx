@@ -1,12 +1,19 @@
 import Link from 'next/link';
 import { Code, Briefcase, Mail } from 'lucide-react';
-              [{
-                label: 'Home', href: '/#home' },
-                { label: 'Projects', href: '/#projects' },
-                { label: 'About', href: '/#about' },
-                { label: 'Blog', href: '/#blog' },
-                { label: 'Contact', href: '/#contact' },
-              ].map((link) => (
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  const navLinks = [
+    { label: 'Home', href: '/#home' },
+    { label: 'Projects', href: '/#projects' },
+    { label: 'About', href: '/#about' },
+    { label: 'Blog', href: '/#blog' },
+    { label: 'Contact', href: '/#contact' },
+  ];
+
+  const socialLinks = [
+    {
       label: 'GitHub',
       href: 'https://github.com/yourusername',
       icon: Code,
@@ -43,12 +50,7 @@ import { Code, Briefcase, Mail } from 'lucide-react';
               Navigation
             </h4>
             <ul className="space-y-2">
-              {[
-                { label: 'Projects', href: '/projects' },
-                { label: 'About', href: '/about' },
-                { label: 'Blog', href: '/blog' },
-                { label: 'Contact', href: '/contact' },
-              ].map((link) => (
+              {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -88,9 +90,7 @@ import { Code, Briefcase, Mail } from 'lucide-react';
 
         <div className="border-t border-border-subtle pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-text-secondary text-sm">
-            <p>
-              © {currentYear} Abdullah Saleem. All rights reserved.
-            </p>
+            <p>© {currentYear} Abdullah Saleem. All rights reserved.</p>
             <p>
               Designed & built with <span className="text-accent-green">♥</span> on Next.js
             </p>
