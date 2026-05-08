@@ -63,7 +63,10 @@ export default function Hero() {
   const name = 'Abdullah Saleem';
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center px-6"
+    >
       {/* Grain overlay */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -136,7 +139,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 mb-12"
         >
           <Link
-            href="/projects"
+            href="/#projects"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-green text-bg-primary rounded-lg font-semibold hover:bg-accent-green-dim transition-all hover:shadow-glow-green"
           >
             View My Work →

@@ -91,6 +91,10 @@ body {
   overflow-x: hidden;
 }
 
+section {
+  scroll-margin-top: 5rem;
+}
+
 /* ============================================
    TYPOGRAPHY
    ============================================ */

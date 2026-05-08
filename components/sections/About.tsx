@@ -60,7 +60,7 @@ export default function About() {
   ];
 
   return (
-    <section className="py-20 px-6">
+    <section id="about" className="py-20 px-6">
       <motion.div
         variants={containerVariants}
         initial="hidden"

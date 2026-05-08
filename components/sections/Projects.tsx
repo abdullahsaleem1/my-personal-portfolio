@@ -40,7 +40,7 @@ export default function Projects() {
   );
 
   return (
-    <section className="py-20 px-6">
+    <section id="projects" className="py-20 px-6">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Code, Briefcase, Mail } from 'lucide-react';
-
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    {
+              [{
+                label: 'Home', href: '/#home' },
+                { label: 'Projects', href: '/#projects' },
+                { label: 'About', href: '/#about' },
+                { label: 'Blog', href: '/#blog' },
+                { label: 'Contact', href: '/#contact' },
+              ].map((link) => (
       label: 'GitHub',
       href: 'https://github.com/yourusername',
       icon: Code,

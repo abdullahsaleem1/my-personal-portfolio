@@ -15,10 +15,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: 'Projects', href: '/projects' },
-    { label: 'About', href: '/about' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Home', href: '/#home' },
+    { label: 'Projects', href: '/#projects' },
+    { label: 'About', href: '/#about' },
+    { label: 'Blog', href: '/#blog' },
+    { label: 'Contact', href: '/#contact' },
   ];
 
   return (
@@ -61,7 +62,7 @@ export default function Navbar() {
           {/* Desktop CTA + Mobile Menu Button */}
           <div className="flex items-center gap-4">
             <Link
-              href="/contact"
+              href="/#contact"
               className="hidden md:flex px-6 py-2.5 bg-accent-green text-bg-primary rounded-md font-semibold hover:bg-accent-green-dim transition-colors text-sm"
             >
               Hire Me →
