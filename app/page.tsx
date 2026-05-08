@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="pt-20">
         <Hero />
       </main>
       <Footer />

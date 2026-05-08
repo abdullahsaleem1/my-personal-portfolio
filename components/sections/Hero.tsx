@@ -63,7 +63,7 @@ export default function Hero() {
   const name = 'Abdullah Saleem';
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 px-6">
+    <section className="relative min-h-screen flex items-center justify-center px-6">
       {/* Grain overlay */}
       <div
         className="absolute inset-0 opacity-[0.03]"

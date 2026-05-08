@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Code } from 'lucide-react';
 
@@ -14,7 +15,7 @@ export default function Projects() {
       tagline: 'Full-stack Laravel app for property listings',
       category: 'Laravel/PHP',
       tags: ['Laravel', 'PHP', 'MySQL', 'HTML/CSS'],
-      image: '/projects/property-management.jpg',
+      image: '/projects/property-management.svg',
       slug: 'property-management-system',
       featured: true,
       github: '#',
@@ -25,7 +26,7 @@ export default function Projects() {
       tagline: 'Real-time vehicle detection with Python & OpenCV',
       category: 'Python',
       tags: ['Python', 'OpenCV', 'Machine Learning'],
-      image: '/projects/vehicle-identification.jpg',
+      image: '/projects/vehicle-identification.svg',
       slug: 'smart-vehicle-identification',
       featured: true,
       github: '#',
@@ -85,11 +86,16 @@ export default function Projects() {
               transition={{ delay: idx * 0.1 }}
               className="group bg-bg-secondary border border-border-subtle rounded-lg overflow-hidden hover:border-accent-green/50 transition-all hover:shadow-glow-green"
             >
-              {/* Image placeholder */}
-              <div className="h-40 bg-bg-tertiary border-b border-border-subtle flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform">
-                <div className="text-text-muted text-sm">
-                  Project Screenshot
-                </div>
+              {/* Image */}
+              <div className="relative aspect-[16/9] w-full border-b border-border-subtle overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={`${project.title} preview`}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/50 via-transparent to-transparent"></div>
               </div>
 
               {/* Content */}
