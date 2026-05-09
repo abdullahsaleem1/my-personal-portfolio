@@ -1,79 +1,47 @@
 import Link from 'next/link';
-import { Heart } from 'lucide-react';
-import { FaGlobe, FaLinkedin } from 'react-icons/fa';
-import { SiGithub, SiGmail } from 'react-icons/si';
-import { navLinks, socialLinks } from '@/lib/portfolio-data';
+import ASLogo from '@/components/common/ASLogo';
 
-const iconMap = {
-  github: SiGithub,
-  linkedin: FaLinkedin,
-  gmail: SiGmail,
-  globe: FaGlobe,
-};
+const navItems = [
+  { id: 1, name: 'Home', url: '#home' },
+  { id: 2, name: 'About', url: '#about' },
+  { id: 3, name: 'Process', url: '#work-process' },
+  { id: 4, name: 'Portfolio', url: '#projects' },
+  { id: 5, name: 'Blog', url: '#blog' },
+  { id: 6, name: 'Services', url: '#services' },
+  { id: 7, name: 'Contact', url: '#contact' },
+];
+
+const copyrightYear = new Date().getFullYear();
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="relative border-t border-white/10 bg-black/50 backdrop-blur-xl">
-      <div className="absolute inset-0 bg-gradient-to-t from-blue-500/5 to-transparent" />
-
-      <div className="relative max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 py-20">
-        <div className="grid md:grid-cols-3 gap-14">
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
-              Abdullah Saleem
-            </h3>
-            <p className="text-slate-200 leading-relaxed">
-              Software Engineer building full-stack applications and exploring AI/ML.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Quick Links</h4>
-            <nav className="space-y-2">
-              {navLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block text-slate-200 hover:text-blue-200 transition-colors duration-200"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Connect</h4>
-            <div className="flex gap-3">
-              {socialLinks.map((link) => {
-                const Icon = iconMap[link.icon as keyof typeof iconMap];
-                return (
-                  <a
-                    key={link.key}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={link.label}
-                    className="p-3.5 rounded-xl backdrop-blur-xl bg-white/5 border border-white/20 text-slate-200 hover:text-blue-300 hover:border-blue-500/40 transition-all duration-200"
-                  >
-                    <Icon className="w-5 h-5" style={{ color: link.color }} />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-20 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-slate-200 text-sm flex items-center gap-2">
-            © {currentYear} Abdullah Saleem. Made with
-            <Heart className="w-4 h-4 text-orange-400 fill-current" />
-            and lots of coffee.
+    <div className="pt-25 md:pt-40 content max-2xl:px-3">
+      <div className="flex max-md:flex-col justify-between mx-0 items-center h-full w-full text-neutral-200">
+        <Link href="/" className="flex items-center border-0 no-underline">
+          <ASLogo className="h-10 w-10 sm:h-12 sm:w-12" />
+          <p className="text-3xl sm:text-[32px] my-auto ms-[12px] font-semibold text-neutral-200">
+            Abdullah
           </p>
+        </Link>
+        <div className="mx-7 max-md:my-7 text-center">
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              className="mx-2 group inline-block relative w-fit text-xs sm:text-base text-neutral-200 no-underline"
+              href={item.url}
+            >
+              {item.name}
+              <span className="absolute left-0 bottom-0 h-0.5 w-full bg-white scale-x-0 duration-300 group-hover:scale-x-100" />
+            </a>
+          ))}
         </div>
+        <p className="text-xs sm:text-base text-neutral-200">
+          Copyright &copy; {copyrightYear} Abdullah Saleem.
+        </p>
       </div>
-    </footer>
+      <p className="text-white text-center text-xs md:text-sm w-full py-10">
+        Built with ❤️ using Next.js & Tailwind CSS
+      </p>
+    </div>
   );
 }

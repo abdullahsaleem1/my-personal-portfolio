@@ -1,104 +1,70 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ExternalLink, Code } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { projectsData } from '@/lib/portfolio-data';
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-28 md:py-32 px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 relative">
-      <div className="max-w-7xl mx-auto space-y-20">
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent"
-        >
-          Work I Have Shipped
-        </motion.h2>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="content mt-10 md:mt-15 xl:mt-25 mb-10 md:mb-25 max-2xl:p-2"
+      id="projects"
+    >
+      <div className="xl:mb-18 mb-5">
+        <div className="max-sm:px-2 text-center mx-auto max-w-[577px]">
+          <p className="section-title">Portfolio</p>
+          <p className="font-normal text-lg max-sm:text-sm pt-6 text-gray-400">
+            Here&apos;s a selection of my recent work, showcasing my skills in
+            building full-stack applications and solving real-world problems.
+          </p>
+        </div>
+      </div>
+      <div className="mx-auto flex justify-center">
+        <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-6">
           {projectsData.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.15 }}
+              transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.03 }}
-              className="relative group rounded-2xl overflow-hidden backdrop-blur-xl bg-white/5 border border-white/10 shadow-xl"
+              className="max-w-[424px] rounded-lg hover:shadow-2xl duration-300 transition-all shadow-gray-300 border border-gray-200 overflow-hidden"
             >
-              <div className="relative h-56 w-full overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                {(project.liveUrl || project.githubUrl) && (
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center gap-5">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition"
-                      >
-                        <ExternalLink className="text-white w-5 h-5" />
-                      </a>
-                    )}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition"
-                      >
-                        <Code className="text-white w-5 h-5" />
-                      </a>
-                    )}
+              {/* Project image/visual */}
+              <div className="h-48 bg-gradient-to-br from-picto-primary/10 via-soft-white to-picto-primary-light/30 flex items-center justify-center">
+                <div className="text-center space-y-2 p-4">
+                  <div className="w-16 h-16 mx-auto bg-picto-primary/10 rounded-xl flex items-center justify-center text-picto-primary text-2xl font-bold">
+                    {project.title.charAt(0)}
                   </div>
-                )}
+                  <p className="text-sm text-picto-primary font-medium">{project.status}</p>
+                </div>
               </div>
 
-              <div className="p-7 space-y-5">
-                <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-xl font-semibold text-white">
-                    {project.title}
-                  </h3>
-                  <span className="text-xs uppercase tracking-wide text-blue-200 bg-blue-500/10 border border-blue-500/30 px-2 py-1 rounded-full">
-                    {project.status}
-                  </span>
-                </div>
-
-                <p className="text-slate-300 text-sm leading-relaxed">
+              <div className="p-4 sm:p-8">
+                <p className="text-gray-400 text-xs font-medium uppercase tracking-wide">
+                  {project.stack.join(' • ')}
+                </p>
+                <p className="text-gray-900 text-lg font-semibold pt-1 mb-3">
+                  {project.title}
+                </p>
+                <p className="text-gray-600 text-sm leading-5">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-3">
-                  {project.stack.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 text-xs rounded-full border border-white/20 bg-white/5 text-slate-200"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex gap-4 pt-3">
+                <div className="flex gap-3 mt-5 flex-wrap">
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-blue-300 hover:text-blue-200 transition"
+                      className="inline-flex items-center gap-2 px-6 py-3 border border-gray-200 rounded-md hover:border-picto-primary hover:text-picto-primary bg-white text-sm font-semibold transition-all duration-300 no-underline text-heading"
                     >
-                      <ExternalLink className="w-4 h-4" />
                       Live Demo
+                      <ArrowRight className="w-4 h-4" />
                     </a>
                   )}
                   {project.githubUrl && (
@@ -106,11 +72,16 @@ export default function Projects() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-blue-300 hover:text-blue-200 transition"
+                      className="inline-flex items-center gap-2 px-6 py-3 border border-gray-200 rounded-md hover:border-picto-primary hover:text-picto-primary bg-white text-sm font-semibold transition-all duration-300 no-underline text-heading"
                     >
-                      <Code className="w-4 h-4" />
                       Code
+                      <ArrowRight className="w-4 h-4" />
                     </a>
+                  )}
+                  {!project.liveUrl && !project.githubUrl && (
+                    <span className="inline-flex items-center gap-2 px-6 py-3 border border-gray-200 rounded-md bg-white text-sm font-semibold text-gray-400">
+                      Coming Soon
+                    </span>
                   )}
                 </div>
               </div>
@@ -118,6 +89,6 @@ export default function Projects() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.div>
   );
 }

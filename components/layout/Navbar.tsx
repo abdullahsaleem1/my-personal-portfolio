@@ -3,105 +3,97 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
-import { navLinks } from '@/lib/portfolio-data';
+import ASLogo from '@/components/common/ASLogo';
+
+const navItems = [
+  { id: 1, name: 'Home', href: '#home' },
+  { id: 2, name: 'About', href: '#about' },
+  { id: 3, name: 'Process', href: '#work-process' },
+  { id: 4, name: 'Portfolio', href: '#projects' },
+  { id: 5, name: 'Blog', href: '#blog' },
+  { id: 6, name: 'Services', href: '#services' },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 80);
+    const handler = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+    <div
+      className={`sticky top-0 z-50 transition-all duration-1000 ${
         scrolled
-          ? 'bg-[#0a0f1f]/80 backdrop-blur-md border-b border-white/10'
-          : 'bg-transparent'
+          ? 'bg-soft-white border-b border-gray-300'
+          : 'bg-white border-white'
       }`}
     >
-      <div className="container max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2 group"
-          >
-            <div className="w-10 h-10 bg-accent-green rounded-md flex items-center justify-center text-bg-primary font-bold text-lg group-hover:bg-accent-green-dim transition-colors">
-              AS
-            </div>
-            <span className="hidden sm:inline font-display font-bold text-text-primary">
-              Abdullah
-            </span>
-          </Link>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-slate-200 hover:text-blue-200 transition-colors relative group text-sm font-medium"
-              >
-                {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-orange-400 group-hover:w-full transition-all duration-300"></span>
-              </Link>
-            ))}
-          </div>
-
-          {/* Desktop CTA + Mobile Menu Button */}
-          <div className="flex items-center gap-5">
-            <Link
-              href="/#contact"
-              className="hidden md:flex px-7 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-orange-500 text-white font-semibold hover:opacity-90 transition-colors text-sm"
-            >
-              Contact
-            </Link>
-
-            {/* Mobile Menu Toggle */}
+      <div className="navbar flex justify-between mx-auto content px-4">
+        <div className="flex items-center justify-between">
+          {/* Mobile menu button */}
+          <div className="lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-white hover:text-blue-200 transition-colors"
+              className="p-2 text-heading"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
+
+          {/* Logo */}
+          <Link href="/" className="flex items-center border-0 lg:ps-5">
+            <ASLogo className="h-8 w-8 sm:h-10 sm:w-10" />
+            <p className="text-2xl sm:text-[32px] my-auto ms-[12px] font-semibold text-heading">
+              Abdullah
+            </p>
+          </Link>
+        </div>
+
+        <div className="lg:flex items-center">
+          {/* Desktop Nav */}
+          <ul className="hidden lg:flex text-[16px] font-medium shrink-0 list-none m-0">
+            {navItems.map((item) => (
+              <li key={item.id}>
+                <a
+                  href={item.href}
+                  className="hover:text-picto-primary hover:bg-picto-primary/10 px-5 py-3 mx-1 rounded-md text-heading no-underline"
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a
+            className="btn-primary-picto px-4 sm:px-8 py-2 sm:py-3 rounded-md font-semibold text-sm sm:text-base"
+            href="#contact"
+          >
+            Contact
+          </a>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0a0f1f]/95 backdrop-blur-md border-b border-white/10 py-8 px-6 sm:px-10 animate-slide-in-right">
-          <div className="flex flex-col gap-5">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
+        <div className="lg:hidden bg-white border-b border-gray-200 py-4 px-6 animate-fade-in">
+          <div className="flex flex-col gap-2">
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-slate-200 hover:text-blue-200 transition-colors font-medium text-base"
+                className="px-4 py-3 text-heading hover:text-picto-primary hover:bg-picto-primary/5 rounded-md font-medium no-underline"
               >
-                {link.label}
-              </Link>
+                {item.name}
+              </a>
             ))}
-            <div className="h-px bg-white/10 my-3"></div>
-            <Link
-              href="/#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full px-5 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-orange-500 text-white font-semibold text-center"
-            >
-              Contact
-            </Link>
           </div>
         </div>
       )}
-    </nav>
+    </div>
   );
 }

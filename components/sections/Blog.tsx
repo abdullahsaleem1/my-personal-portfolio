@@ -1,50 +1,82 @@
-import Link from 'next/link';
+'use client';
+
+import { motion } from 'framer-motion';
+
+const blogData = [
+  {
+    id: 1,
+    date: 'Coming Soon',
+    comments: 0,
+    title: 'Building Full-Stack MERN Applications from Scratch',
+  },
+  {
+    id: 2,
+    date: 'Coming Soon',
+    comments: 0,
+    title: 'Tips for Effective Dashboard Layouts and Usability',
+  },
+  {
+    id: 3,
+    date: 'Coming Soon',
+    comments: 0,
+    title: 'Laravel vs Node.js: Choosing the Right Backend',
+  },
+  {
+    id: 4,
+    date: 'Coming Soon',
+    comments: 0,
+    title: 'Getting Started with AI/ML for Web Developers',
+  },
+];
 
 export default function Blog() {
   return (
-    <section id="blog" className="py-28 md:py-32 px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 relative">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
-            Blog
-          </h2>
-          <p className="text-slate-300 mt-4 max-w-2xl mx-auto">
-            Coming soon. I will share build notes, case studies, and lessons
-            learned from shipping real projects.
-          </p>
-        </div>
-
-        <div className="mt-16 grid md:grid-cols-2 gap-10">
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-7 space-y-4">
-            <p className="text-sm uppercase tracking-wide text-blue-300">
-              Case Studies
-            </p>
-            <h3 className="text-xl font-semibold text-white">Deep dives are on the way</h3>
-            <p className="text-slate-300 text-sm">
-              I am compiling build breakdowns, stack decisions, and lessons learned from
-              real client work and university projects.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-7 space-y-4">
-            <p className="text-sm uppercase tracking-wide text-blue-300">
-              Learning Log
-            </p>
-            <h3 className="text-xl font-semibold text-white">Notes from the journey</h3>
-            <p className="text-slate-300 text-sm">
-              Expect concise writeups on MERN, Laravel, and AI/ML experiments as I ship.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-10 flex justify-center">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl border border-white/20 text-white hover:bg-white/10 transition"
-          >
-            Visit the blog page
-          </Link>
-        </div>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="content py-25 px-2 relative"
+      id="blog"
+    >
+      <div className="max-w-[540px] text-center mx-auto pb-18">
+        <p className="section-title pb-6">Blog</p>
+        <p className="text-xs sm:text-base md:text-lg text-gray-400">
+          Coming soon. I&apos;ll share build notes, case studies, and lessons learned
+          from shipping real projects.
+        </p>
       </div>
-    </section>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {blogData.map((data, index) => (
+          <motion.div
+            key={data.id}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className="overflow-hidden rounded-lg border border-gray-100 hover:shadow-2xl bg-white shadow-gray-300 transition-all duration-300"
+          >
+            <div className="h-[226px] bg-gradient-to-br from-picto-primary/5 via-white to-picto-primary-light/20 flex items-center justify-center">
+              <div className="text-center p-4">
+                <div className="w-12 h-12 mx-auto bg-picto-primary/10 rounded-lg flex items-center justify-center text-picto-primary text-xl mb-3">
+                  📝
+                </div>
+                <p className="text-sm text-picto-primary font-medium">Blog Post</p>
+              </div>
+            </div>
+            <div className="m-6">
+              <p className="text-xs sm:text-sm font-normal text-gray-400">
+                {data.date}
+              </p>
+              <p className="text-sm sm:text-lg font-medium text-heading mt-2">
+                {data.title.length > 40
+                  ? `${data.title.slice(0, 40)}...`
+                  : data.title}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
   );
 }

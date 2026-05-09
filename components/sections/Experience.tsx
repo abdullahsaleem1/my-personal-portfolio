@@ -11,60 +11,46 @@ const formatDate = (value: string) =>
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-28 md:py-32 px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 relative">
-      <div className="max-w-5xl mx-auto space-y-20">
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent"
-        >
-          Experience Timeline
-        </motion.h2>
-
-        <div className="relative">
-          <div className="absolute left-1/2 top-0 w-1 h-full bg-gradient-to-b from-blue-500 via-blue-400 to-orange-500 transform -translate-x-1/2 rounded-full" />
-
-          <div className="space-y-20">
-            {experienceData.map((exp, index) => {
-              const isLeft = index % 2 === 0;
-              return (
-                <motion.div
-                  key={`${exp.company}-${exp.position}`}
-                  initial={{ opacity: 0, x: isLeft ? -80 : 80 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className={`relative flex ${isLeft ? 'justify-start' : 'justify-end'}`}
-                >
-                  <div className="absolute left-1/2 w-5 h-5 bg-blue-500 rounded-full border-4 border-[#0a0f1f] transform -translate-x-1/2 z-10" />
-
-                  <div className="w-full md:w-5/12 p-7 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-xl">
-                    <h3 className="text-xl font-semibold text-white">
-                      {exp.position}
-                    </h3>
-                    <p className="text-blue-300 font-medium">{exp.company}</p>
-                    <p className="text-sm text-slate-300 mt-1">
-                      {formatDate(exp.startDate)} - {exp.current ? 'Present' : formatDate(exp.endDate || '')}
-                    </p>
-                    {exp.location && (
-                      <p className="text-sm text-slate-300 mt-1">
-                        {exp.location}
-                      </p>
-                    )}
-                    {exp.description && (
-                      <p className="text-slate-300 mt-4 text-sm leading-relaxed">
-                        {exp.description}
-                      </p>
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="content py-10 md:py-25 px-2 max-2xl:px-4"
+      id="experience"
+    >
+      <p className="section-title text-center mb-12">Experience</p>
+      <div className="max-w-3xl mx-auto space-y-6">
+        {experienceData.map((exp, index) => (
+          <motion.div
+            key={`${exp.company}-${exp.position}`}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="p-6 sm:p-8 bg-white rounded-xl border border-gray-200 hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+          >
+            <div className="absolute left-0 top-0 w-1 h-full bg-picto-primary transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
+            <h3 className="text-xl font-semibold text-heading">
+              {exp.position}
+            </h3>
+            <p className="text-picto-primary font-medium">{exp.company}</p>
+            <p className="text-sm text-body-text mt-1">
+              {formatDate(exp.startDate)} - {exp.current ? 'Present' : formatDate(exp.endDate || '')}
+            </p>
+            {exp.location && (
+              <p className="text-sm text-body-text mt-1">
+                📍 {exp.location}
+              </p>
+            )}
+            {exp.description && (
+              <p className="text-body-text mt-4 text-sm leading-relaxed">
+                {exp.description}
+              </p>
+            )}
+          </motion.div>
+        ))}
       </div>
-    </section>
+    </motion.div>
   );
 }
