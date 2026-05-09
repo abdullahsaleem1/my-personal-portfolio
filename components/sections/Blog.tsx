@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Blog() {
   return (
-    <section id="blog" className="py-28 md:py-32 px-8 relative">
+    <section id="blog" className="py-28 md:py-32 px-6 sm:px-10 lg:px-16 relative">
       <div className="max-w-6xl mx-auto">
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">

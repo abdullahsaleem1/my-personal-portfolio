@@ -7,7 +7,7 @@ import { aboutData } from '@/lib/portfolio-data';
 
 export default function About() {
   return (
-    <section id="about" className="py-28 md:py-32 px-8 relative">
+    <section id="about" className="py-28 md:py-32 px-6 sm:px-10 lg:px-16 relative">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
         <motion.div
           initial={{ opacity: 0, x: -60 }}

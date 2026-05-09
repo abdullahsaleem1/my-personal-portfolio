@@ -23,7 +23,7 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <div className="container max-w-6xl mx-auto px-8">
+      <div className="container max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link
@@ -79,7 +79,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0a0f1f]/95 backdrop-blur-md border-b border-white/10 py-8 px-8 animate-slide-in-right">
+        <div className="md:hidden bg-[#0a0f1f]/95 backdrop-blur-md border-b border-white/10 py-8 px-6 sm:px-10 animate-slide-in-right">
           <div className="flex flex-col gap-5">
             {navLinks.map((link) => (
               <Link

@@ -34,7 +34,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center px-8 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center px-6 sm:px-10 lg:px-16 relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-black to-orange-900/30 blur-3xl" />
 

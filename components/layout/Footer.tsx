@@ -18,7 +18,7 @@ export default function Footer() {
     <footer className="relative border-t border-white/10 bg-black/50 backdrop-blur-xl">
       <div className="absolute inset-0 bg-gradient-to-t from-blue-500/5 to-transparent" />
 
-      <div className="relative max-w-6xl mx-auto px-8 py-20">
+      <div className="relative max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 py-20">
         <div className="grid md:grid-cols-3 gap-14">
           <div className="space-y-4">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">

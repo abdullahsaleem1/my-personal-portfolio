@@ -12,7 +12,7 @@ export default function BlogPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-20">
+      <main className="pt-24">
         <Blog />
       </main>
       <Footer />

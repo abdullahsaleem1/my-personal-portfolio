@@ -10,8 +10,8 @@ const statusDot = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-6 relative">
-      <div className="max-w-6xl mx-auto space-y-12">
+    <section id="skills" className="py-28 md:py-32 px-6 sm:px-10 lg:px-16 relative">
+      <div className="max-w-6xl mx-auto space-y-14">
         <div className="text-center space-y-4">
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
@@ -36,7 +36,7 @@ export default function Skills() {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
           {skillsData.skills.map((skill, index) => (
             <motion.div
               key={`${skill.category}-${skill.name}`}

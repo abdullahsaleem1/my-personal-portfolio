@@ -11,7 +11,7 @@ const formatDate = (value: string) =>
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-28 md:py-32 px-8 relative">
+    <section id="experience" className="py-28 md:py-32 px-6 sm:px-10 lg:px-16 relative">
       <div className="max-w-5xl mx-auto space-y-20">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}

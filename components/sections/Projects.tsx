@@ -7,7 +7,7 @@ import { projectsData } from '@/lib/portfolio-data';
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-28 md:py-32 px-8 relative">
+    <section id="projects" className="py-28 md:py-32 px-6 sm:px-10 lg:px-16 relative">
       <div className="max-w-7xl mx-auto space-y-20">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}

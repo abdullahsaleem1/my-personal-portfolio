@@ -12,7 +12,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-20">
+      <main className="pt-24">
         <Contact />
       </main>
       <Footer />

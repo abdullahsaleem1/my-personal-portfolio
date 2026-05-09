@@ -67,7 +67,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 md:py-32 px-8 relative">
+    <section id="contact" className="py-28 md:py-32 px-6 sm:px-10 lg:px-16 relative">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
