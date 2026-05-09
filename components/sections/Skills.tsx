@@ -10,7 +10,7 @@ const statusDot = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-28 md:py-32 px-6 sm:px-10 lg:px-16 relative">
+    <section id="skills" className="py-28 md:py-32 px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 relative">
       <div className="max-w-6xl mx-auto space-y-14">
         <div className="text-center space-y-4">
           <motion.h2
