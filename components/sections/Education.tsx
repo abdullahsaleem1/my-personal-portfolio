@@ -11,19 +11,19 @@ const formatDate = (value: string) =>
 
 export default function Education() {
   return (
-    <section id="education" className="py-24 px-6 relative">
-      <div className="max-w-6xl mx-auto space-y-16">
+    <section id="education" className="py-28 md:py-32 px-8 relative">
+      <div className="max-w-6xl mx-auto space-y-20">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
+          className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent"
         >
           Education
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 gap-12">
           {educationData.map((edu, index) => (
             <motion.div
               key={edu.institution}
@@ -33,20 +33,20 @@ export default function Education() {
               viewport={{ once: true }}
               className="relative group"
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-500" />
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-orange-500 rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-500" />
 
-              <div className="relative p-8 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-xl">
+              <div className="relative p-9 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-xl">
                 <h3 className="text-xl font-semibold text-white">
                   {edu.degree} - {edu.field}
                 </h3>
-                <p className="text-cyan-300 font-medium mt-1">
+                <p className="text-blue-300 font-medium mt-1">
                   {edu.institution}
                 </p>
-                <p className="text-sm text-gray-400 mt-2">
+                <p className="text-sm text-slate-300 mt-2">
                   {formatDate(edu.startDate)} - {edu.current ? 'Present' : formatDate(edu.endDate || '')}
                 </p>
                 {edu.description && (
-                  <p className="text-gray-400 mt-4 text-sm leading-relaxed">
+                  <p className="text-slate-300 mt-4 text-sm leading-relaxed">
                     {edu.description}
                   </p>
                 )}

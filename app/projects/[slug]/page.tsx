@@ -47,7 +47,7 @@ export default async function CaseStudyPage({
             <div className="mb-12">
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 text-gray-400 hover:text-purple-300 transition-colors mb-6 text-sm"
+                className="inline-flex items-center gap-2 text-slate-300 hover:text-blue-300 transition-colors mb-6 text-sm"
               >
                 ← Back to Projects
               </Link>
@@ -55,21 +55,21 @@ export default async function CaseStudyPage({
               <h1 className="text-5xl md:text-6xl font-bold font-display mb-4">
                 {project.title}
               </h1>
-              <p className="text-xl text-gray-400 mb-8">
+              <p className="text-xl text-slate-300 mb-8">
                 {project.tagline}
               </p>
 
               {/* Meta */}
               <div className="flex flex-wrap gap-6 mb-8 pb-8 border-b border-white/10">
                 <div>
-                  <p className="text-gray-500 text-sm uppercase tracking-wide">
+                  <p className="text-slate-300 text-sm uppercase tracking-wide">
                     Stack
                   </p>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {project.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-purple-500/10 border border-purple-500/30 text-purple-200 rounded-full text-sm"
+                        className="px-3 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-200 rounded-full text-sm"
                       >
                         {tech}
                       </span>
@@ -84,7 +84,7 @@ export default async function CaseStudyPage({
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 border border-white/10 text-gray-300 hover:text-purple-200 hover:border-purple-500/40 rounded-lg transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2 border border-white/10 text-slate-200 hover:text-blue-200 hover:border-blue-500/40 rounded-lg transition-colors"
                     >
                       <Code className="w-4 h-4" />
                       Code
@@ -95,7 +95,7 @@ export default async function CaseStudyPage({
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/30 text-purple-200 rounded-lg hover:bg-purple-500/20 transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/30 text-blue-200 rounded-lg hover:bg-blue-500/20 transition-colors"
                     >
                       <ExternalLink className="w-4 h-4" />
                       Live Demo
@@ -113,15 +113,15 @@ export default async function CaseStudyPage({
             {/* Next Project CTA */}
             {nextProject && (
               <div className="p-8 bg-white/5 border border-white/10 rounded-2xl">
-                <p className="text-gray-500 text-sm mb-4">Next Project</p>
+                <p className="text-slate-300 text-sm mb-4">Next Project</p>
                 <Link
                   href={`/projects/${nextProject.slug}`}
                   className="group flex items-center justify-between"
                 >
-                  <h3 className="text-2xl font-bold font-display group-hover:text-purple-300 transition-colors">
+                  <h3 className="text-2xl font-bold font-display group-hover:text-blue-300 transition-colors">
                     {nextProject.title}
                   </h3>
-                  <ArrowRight className="w-6 h-6 text-purple-300 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-6 h-6 text-blue-300 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             )}

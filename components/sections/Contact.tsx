@@ -2,14 +2,16 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Code, Briefcase, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe } from 'lucide-react';
+import { FaGlobe, FaLinkedin } from 'react-icons/fa';
+import { SiGithub, SiGmail } from 'react-icons/si';
 import { contactData, socialLinks } from '@/lib/portfolio-data';
 
 const iconMap = {
-  github: Code,
-  linkedin: Briefcase,
-  email: Mail,
-  portfolio: Globe,
+  github: SiGithub,
+  linkedin: FaLinkedin,
+  gmail: SiGmail,
+  globe: FaGlobe,
 };
 
 export default function Contact() {
@@ -65,7 +67,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 relative">
+    <section id="contact" className="py-28 md:py-32 px-8 relative">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -74,15 +76,15 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
             {contactData.title}
           </h2>
-          <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+          <p className="text-slate-300 mt-4 max-w-2xl mx-auto">
             {contactData.subtitle}
           </p>
         </motion.div>
 
-        <div className="mt-16 grid lg:grid-cols-[1fr_1.2fr] gap-10">
+        <div className="mt-20 grid lg:grid-cols-[1fr_1.2fr] gap-12">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -90,47 +92,47 @@ export default function Contact() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 space-y-4">
-              <div className="flex items-start gap-3 text-gray-300">
-                <Mail className="w-5 h-5 text-purple-300 mt-1" />
+            <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-9 space-y-5">
+              <div className="flex items-start gap-3 text-slate-200">
+                <Mail className="w-5 h-5 text-blue-300 mt-1" />
                 <div>
-                  <p className="text-sm text-gray-400">Email</p>
+                  <p className="text-sm text-slate-300">Email</p>
                   <a
                     href={`mailto:${contactData.email}`}
-                    className="text-white hover:text-purple-300 transition"
+                    className="text-white hover:text-blue-300 transition"
                   >
                     {contactData.email}
                   </a>
                 </div>
               </div>
-              <div className="flex items-start gap-3 text-gray-300">
-                <Phone className="w-5 h-5 text-purple-300 mt-1" />
+              <div className="flex items-start gap-3 text-slate-200">
+                <Phone className="w-5 h-5 text-blue-300 mt-1" />
                 <div>
-                  <p className="text-sm text-gray-400">Phone</p>
+                  <p className="text-sm text-slate-300">Phone</p>
                   <a
                     href={`tel:${contactData.phone.replace(/\s+/g, '')}`}
-                    className="text-white hover:text-purple-300 transition"
+                    className="text-white hover:text-blue-300 transition"
                   >
                     {contactData.phone}
                   </a>
                 </div>
               </div>
-              <div className="flex items-start gap-3 text-gray-300">
-                <MapPin className="w-5 h-5 text-purple-300 mt-1" />
+              <div className="flex items-start gap-3 text-slate-200">
+                <MapPin className="w-5 h-5 text-blue-300 mt-1" />
                 <div>
-                  <p className="text-sm text-gray-400">Location</p>
+                  <p className="text-sm text-slate-300">Location</p>
                   <p className="text-white">{contactData.location}</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 text-gray-300">
-                <Globe className="w-5 h-5 text-purple-300 mt-1" />
+              <div className="flex items-start gap-3 text-slate-200">
+                <Globe className="w-5 h-5 text-blue-300 mt-1" />
                 <div>
-                  <p className="text-sm text-gray-400">Portfolio</p>
+                  <p className="text-sm text-slate-300">Portfolio</p>
                   <a
                     href={`https://${contactData.portfolio}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-purple-300 transition"
+                    className="text-white hover:text-blue-300 transition"
                   >
                     {contactData.portfolio}
                   </a>
@@ -138,22 +140,22 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6">
-              <p className="text-sm uppercase tracking-wide text-gray-400 mb-4">
+            <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-7">
+              <p className="text-sm uppercase tracking-wide text-slate-300 mb-4">
                 Socials
               </p>
               <div className="flex flex-wrap gap-3">
                 {socialLinks.map((link) => {
-                  const Icon = iconMap[link.key as keyof typeof iconMap];
+                  const Icon = iconMap[link.icon as keyof typeof iconMap];
                   return (
                     <a
                       key={link.key}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-purple-200 hover:border-purple-500/40 transition"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/20 text-slate-200 hover:text-blue-200 hover:border-blue-500/40 transition"
                     >
-                      <Icon className="w-4 h-4" />
+                      <Icon className="w-4 h-4" style={{ color: link.color }} />
                       {link.label}
                     </a>
                   );
@@ -169,13 +171,13 @@ export default function Contact() {
             viewport={{ once: true }}
             className="relative group"
           >
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-purple-600 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-500" />
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-orange-500 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-500" />
 
             <form
               onSubmit={handleSubmit}
-              className="relative p-10 rounded-3xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl space-y-6"
+              className="relative p-12 rounded-3xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl space-y-7"
             >
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid sm:grid-cols-2 gap-5">
                 <div className="relative">
                   <input
                     type="text"
@@ -183,10 +185,10 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full p-4 bg-transparent border border-white/20 rounded-xl focus:border-pink-500 outline-none text-white peer"
+                    className="w-full p-5 bg-transparent border border-white/20 rounded-xl focus:border-blue-500 outline-none text-white peer"
                     placeholder=" "
                   />
-                  <label className="absolute left-4 top-4 text-gray-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-pink-400 bg-black px-1 rounded">
+                  <label className="absolute left-5 top-5 text-slate-300 transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-slate-300 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-blue-400 bg-black px-1 rounded">
                     Your Name
                   </label>
                 </div>
@@ -198,10 +200,10 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full p-4 bg-transparent border border-white/20 rounded-xl focus:border-pink-500 outline-none text-white peer"
+                    className="w-full p-5 bg-transparent border border-white/20 rounded-xl focus:border-blue-500 outline-none text-white peer"
                     placeholder=" "
                   />
-                  <label className="absolute left-4 top-4 text-gray-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-pink-400 bg-black px-1 rounded">
+                  <label className="absolute left-5 top-5 text-slate-300 transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-slate-300 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-blue-400 bg-black px-1 rounded">
                     Your Email
                   </label>
                 </div>
@@ -212,7 +214,7 @@ export default function Contact() {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full p-4 bg-transparent border border-white/20 rounded-xl focus:border-pink-500 outline-none text-white"
+                  className="w-full p-5 bg-transparent border border-white/20 rounded-xl focus:border-blue-500 outline-none text-white"
                 >
                   {contactData.subjects.map((subject) => (
                     <option key={subject} value={subject} className="text-black">
@@ -229,10 +231,10 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full p-4 bg-transparent border border-white/20 rounded-xl focus:border-pink-500 outline-none text-white peer resize-none"
+                  className="w-full p-5 bg-transparent border border-white/20 rounded-xl focus:border-blue-500 outline-none text-white peer resize-none"
                   placeholder=" "
                 />
-                <label className="absolute left-4 top-4 text-gray-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-pink-400 bg-black px-1 rounded">
+                <label className="absolute left-5 top-5 text-slate-300 transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-slate-300 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-blue-400 bg-black px-1 rounded">
                   Your Message
                 </label>
               </div>
@@ -252,7 +254,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 font-semibold text-white hover:scale-[1.02] transition transform duration-300 disabled:opacity-60"
+                className="w-full py-5 rounded-xl bg-gradient-to-r from-blue-600 to-orange-500 font-semibold text-white hover:scale-[1.02] transition transform duration-300 disabled:opacity-60"
               >
                 {loading ? 'Sending...' : 'Send Message'}
               </button>

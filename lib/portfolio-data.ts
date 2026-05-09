@@ -15,21 +15,29 @@ export const socialLinks = [
     key: 'github',
     label: 'GitHub',
     href: 'https://github.com/yourusername',
+    icon: 'github',
+    color: '#ffffff',
   },
   {
     key: 'linkedin',
     label: 'LinkedIn',
     href: 'https://linkedin.com/in/yourusername',
+    icon: 'linkedin',
+    color: '#0A66C2',
   },
   {
     key: 'email',
     label: 'Email',
     href: 'mailto:iamabdullahsaleem1@gmail.com',
+    icon: 'gmail',
+    color: '#EA4335',
   },
   {
     key: 'portfolio',
     label: 'Portfolio',
     href: 'https://abdullahsaleemportfolio.netlify.app',
+    icon: 'globe',
+    color: '#38bdf8',
   },
 ];
 
@@ -78,8 +86,8 @@ export const aboutData = {
 export const skillsData = {
   title: 'Skills and Technologies',
   legend: [
-    { label: 'Confident', color: 'emerald' },
-    { label: 'Learning', color: 'sky' },
+    { label: 'Confident', color: 'blue' },
+    { label: 'Learning', color: 'orange' },
   ],
   skills: [
     { name: 'React.js', category: 'Frontend', level: 85, status: 'confident' },

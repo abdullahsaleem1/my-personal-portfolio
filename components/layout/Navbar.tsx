@@ -19,11 +19,11 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-black/70 backdrop-blur-md border-b border-white/10'
+          ? 'bg-[#0a0f1f]/80 backdrop-blur-md border-b border-white/10'
           : 'bg-transparent'
       }`}
     >
-      <div className="container max-w-6xl mx-auto px-6">
+      <div className="container max-w-6xl mx-auto px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link
@@ -39,24 +39,24 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-300 hover:text-purple-200 transition-colors relative group text-sm font-medium"
+                className="text-slate-200 hover:text-blue-200 transition-colors relative group text-sm font-medium"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-orange-400 group-hover:w-full transition-all duration-300"></span>
               </Link>
             ))}
           </div>
 
           {/* Desktop CTA + Mobile Menu Button */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <Link
               href="/#contact"
-              className="hidden md:flex px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:opacity-90 transition-colors text-sm"
+              className="hidden md:flex px-7 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-orange-500 text-white font-semibold hover:opacity-90 transition-colors text-sm"
             >
               Contact
             </Link>
@@ -64,7 +64,7 @@ export default function Navbar() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-white hover:text-purple-200 transition-colors"
+              className="md:hidden text-white hover:text-blue-200 transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
@@ -79,23 +79,23 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-md border-b border-white/10 py-6 px-6 animate-slide-in-right">
-          <div className="flex flex-col gap-4">
+        <div className="md:hidden bg-[#0a0f1f]/95 backdrop-blur-md border-b border-white/10 py-8 px-8 animate-slide-in-right">
+          <div className="flex flex-col gap-5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-gray-300 hover:text-purple-200 transition-colors font-medium text-base"
+                className="text-slate-200 hover:text-blue-200 transition-colors font-medium text-base"
               >
                 {link.label}
               </Link>
             ))}
-            <div className="h-px bg-white/10 my-2"></div>
+            <div className="h-px bg-white/10 my-3"></div>
             <Link
               href="/#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold text-center"
+              className="w-full px-5 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-orange-500 text-white font-semibold text-center"
             >
               Contact
             </Link>

@@ -20,9 +20,9 @@ const config: Config = {
           muted: '#555555',
         },
         'accent': {
-          green: '#a855f7',
-          'green-dim': '#ec4899',
-          blue: '#38bdf8',
+          green: '#3b82f6',
+          'green-dim': '#2563eb',
+          blue: '#f97316',
           amber: '#f59e0b',
           red: '#ef4444',
         },
