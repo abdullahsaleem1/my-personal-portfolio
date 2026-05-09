@@ -1,140 +1,115 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Code } from 'lucide-react';
+import { ExternalLink, Code } from 'lucide-react';
+import { projectsData } from '@/lib/portfolio-data';
 
 export default function Projects() {
-  const [filter, setFilter] = useState('All');
-
-  const projects = [
-    {
-      title: 'Property Management System',
-      tagline: 'Full-stack Laravel app for property listings',
-      category: 'Laravel/PHP',
-      tags: ['Laravel', 'PHP', 'MySQL', 'HTML/CSS'],
-      image: '/projects/property-management.svg',
-      slug: 'property-management-system',
-      featured: true,
-      github: '#',
-      live: '#',
-    },
-    {
-      title: 'Smart Vehicle Identification',
-      tagline: 'Real-time vehicle detection with Python & OpenCV',
-      category: 'Python',
-      tags: ['Python', 'OpenCV', 'Machine Learning'],
-      image: '/projects/vehicle-identification.svg',
-      slug: 'smart-vehicle-identification',
-      featured: true,
-      github: '#',
-    },
-  ];
-
-  const filters = ['All', 'MERN', 'Laravel/PHP', 'Python', 'AI/ML'];
-
-  const filtered = projects.filter(
-    (p) => filter === 'All' || p.category === filter
-  );
-
   return (
-    <section id="projects" className="py-20 px-6">
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="container max-w-6xl mx-auto"
-      >
-        {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold font-display mb-4">
-            Projects
-          </h1>
-          <p className="text-text-secondary text-lg max-w-2xl">
-            A collection of full-stack applications and ML experiments that
-            showcase my problem-solving approach and technical depth.
-          </p>
-        </div>
+    <section id="projects" className="py-24 px-6 relative">
+      <div className="max-w-7xl mx-auto space-y-16">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
+        >
+          Work I Have Shipped
+        </motion.h2>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap gap-3 mb-12">
-          {filters.map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`px-4 py-2 rounded-full font-medium transition-all text-sm ${
-                filter === f
-                  ? 'bg-accent-green text-bg-primary'
-                  : 'border border-border-subtle text-text-secondary hover:border-accent-green hover:text-accent-green'
-              }`}
-            >
-              {f}
-            </button>
-          ))}
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {filtered.map((project, idx) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {projectsData.map((project, index) => (
             <motion.div
-              key={project.slug}
-              initial={{ opacity: 0, y: 20 }}
+              key={project.title}
+              initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group bg-bg-secondary border border-border-subtle rounded-lg overflow-hidden hover:border-accent-green/50 transition-all hover:shadow-glow-green"
+              whileHover={{ scale: 1.03 }}
+              className="relative group rounded-2xl overflow-hidden backdrop-blur-xl bg-white/5 border border-white/10 shadow-xl"
             >
-              {/* Image */}
-              <div className="relative aspect-[16/9] w-full border-b border-border-subtle overflow-hidden">
+              <div className="relative h-56 w-full overflow-hidden">
                 <Image
                   src={project.image}
-                  alt={`${project.title} preview`}
+                  alt={project.title}
                   fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/50 via-transparent to-transparent"></div>
+                {(project.liveUrl || project.githubUrl) && (
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center gap-4">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition"
+                      >
+                        <ExternalLink className="text-white w-5 h-5" />
+                      </a>
+                    )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition"
+                      >
+                        <Code className="text-white w-5 h-5" />
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold font-display mb-2 group-hover:text-accent-green transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-text-secondary text-sm mb-4">
-                  {project.tagline}
+              <div className="p-6 space-y-4">
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="text-xl font-semibold text-white">
+                    {project.title}
+                  </h3>
+                  <span className="text-xs uppercase tracking-wide text-purple-300 bg-purple-500/10 border border-purple-500/30 px-2 py-1 rounded-full">
+                    {project.status}
+                  </span>
+                </div>
+
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {project.description}
                 </p>
 
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag) => (
+                <div className="flex flex-wrap gap-2">
+                  {project.stack.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-1 bg-bg-tertiary border border-border-subtle rounded text-xs text-text-secondary"
+                      className="px-2.5 py-1 text-xs rounded-full border border-white/10 bg-white/5 text-gray-300"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                {/* Links */}
-                <div className="flex gap-3">
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="flex-1 px-4 py-2 bg-accent-green/10 border border-accent-green/30 text-accent-green rounded hover:bg-accent-green/20 transition-colors text-sm font-medium text-center"
-                  >
-                    View Case Study
-                  </Link>
-                  {project.github && (
+                <div className="flex gap-3 pt-2">
+                  {project.liveUrl && (
                     <a
-                      href={project.github}
+                      href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2 border border-border-subtle text-text-secondary hover:text-accent-green hover:border-accent-green transition-colors rounded flex items-center gap-2"
+                      className="flex items-center gap-2 text-sm text-purple-300 hover:text-purple-200 transition"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Live Demo
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-purple-300 hover:text-purple-200 transition"
                     >
                       <Code className="w-4 h-4" />
+                      Code
                     </a>
                   )}
                 </div>
@@ -142,7 +117,7 @@ export default function Projects() {
             </motion.div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

@@ -1,84 +1,60 @@
 import Link from 'next/link';
-import { Code, Briefcase, Mail } from 'lucide-react';
+import { Code, Briefcase, Mail, Globe, Heart } from 'lucide-react';
+import { navLinks, socialLinks } from '@/lib/portfolio-data';
+
+const iconMap = {
+  github: Code,
+  linkedin: Briefcase,
+  email: Mail,
+  portfolio: Globe,
+};
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const navLinks = [
-    { label: 'Home', href: '/#home' },
-    { label: 'Projects', href: '/#projects' },
-    { label: 'About', href: '/#about' },
-    { label: 'Blog', href: '/#blog' },
-    { label: 'Contact', href: '/#contact' },
-  ];
-
-  const socialLinks = [
-    {
-      label: 'GitHub',
-      href: 'https://github.com/yourusername',
-      icon: Code,
-    },
-    {
-      label: 'LinkedIn',
-      href: 'https://linkedin.com/in/yourusername',
-      icon: Briefcase,
-    },
-    {
-      label: 'Email',
-      href: 'mailto:iamabdullahsaleem1@gmail.com',
-      icon: Mail,
-    },
-  ];
-
   return (
-    <footer className="bg-bg-secondary border-t border-border-subtle">
-      <div className="container max-w-6xl mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {/* About */}
-          <div>
-            <h3 className="font-display font-bold text-text-primary mb-2">
+    <footer className="relative border-t border-white/10 bg-black/50 backdrop-blur-xl">
+      <div className="absolute inset-0 bg-gradient-to-t from-purple-500/5 to-transparent" />
+
+      <div className="relative max-w-6xl mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-3 gap-12">
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               Abdullah Saleem
             </h3>
-            <p className="text-text-secondary text-sm">
-              Software Engineer building full-stack applications & exploring AI/ML.
+            <p className="text-gray-400 leading-relaxed">
+              Software Engineer building full-stack applications and exploring AI/ML.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-display font-semibold text-text-primary mb-4 text-sm">
-              Navigation
-            </h4>
-            <ul className="space-y-2">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-text-secondary hover:text-accent-green transition-colors text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
+          <div className="space-y-4">
+            <h4 className="text-lg font-semibold text-white">Quick Links</h4>
+            <nav className="space-y-2">
+              {navLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="block text-gray-400 hover:text-purple-300 transition-colors duration-200"
+                >
+                  {item.label}
+                </Link>
               ))}
-            </ul>
+            </nav>
           </div>
 
-          {/* Social Links */}
-          <div>
-            <h4 className="font-display font-semibold text-text-primary mb-4 text-sm">
-              Connect
-            </h4>
-            <div className="flex gap-4">
+          <div className="space-y-4">
+            <h4 className="text-lg font-semibold text-white">Connect</h4>
+            <div className="flex gap-3">
               {socialLinks.map((link) => {
-                const Icon = link.icon;
+                const Icon = iconMap[link.key as keyof typeof iconMap];
                 return (
                   <a
-                    key={link.href}
+                    key={link.key}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-text-secondary hover:text-accent-green hover:scale-110 transition-all"
                     aria-label={link.label}
+                    className="p-3 rounded-xl backdrop-blur-xl bg-white/5 border border-white/10 text-gray-400 hover:text-purple-400 hover:border-purple-500/30 transition-all duration-200"
                   >
                     <Icon className="w-5 h-5" />
                   </a>
@@ -88,13 +64,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-border-subtle pt-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-text-secondary text-sm">
-            <p>© {currentYear} Abdullah Saleem. All rights reserved.</p>
-            <p>
-              Designed & built with <span className="text-accent-green">♥</span> on Next.js
-            </p>
-          </div>
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-gray-400 text-sm flex items-center gap-2">
+            © {currentYear} Abdullah Saleem. Made with
+            <Heart className="w-4 h-4 text-pink-400 fill-current" />
+            and lots of coffee.
+          </p>
         </div>
       </div>
     </footer>

@@ -2,26 +2,38 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Code, Briefcase } from 'lucide-react';
+import { Mail, Phone, MapPin, Code, Briefcase, Globe } from 'lucide-react';
+import { contactData, socialLinks } from '@/lib/portfolio-data';
+
+const iconMap = {
+  github: Code,
+  linkedin: Briefcase,
+  email: Mail,
+  portfolio: Globe,
+};
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: 'Job Opportunity',
+    subject: contactData.subjects[0],
     message: '',
   });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
+  const handleChange = (
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setLoading(true);
     setError('');
 
@@ -37,14 +49,15 @@ export default function Contact() {
         setFormData({
           name: '',
           email: '',
-          subject: 'Job Opportunity',
+          subject: contactData.subjects[0],
           message: '',
         });
         setTimeout(() => setSubmitted(false), 5000);
       } else {
         setError('Failed to send message. Please try again.');
       }
-    } catch (err) {
+    } catch (error) {
+      console.error('Contact form error:', error);
       setError('An error occurred. Please try again later.');
     } finally {
       setLoading(false);
@@ -52,201 +65,201 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 px-6">
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="container max-w-6xl mx-auto"
-      >
-        {/* Header */}
-        <motion.div className="mb-16">
-          <h1 className="text-5xl md:text-6xl font-bold font-display mb-4">
-            Get in Touch
-          </h1>
-          <p className="text-text-secondary text-lg max-w-2xl">
-            Have an opportunity, a question, or just want to chat? I'd love to
-            hear from you. Fill out the form or reach out directly.
+    <section id="contact" className="py-24 px-6 relative">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">
+            {contactData.title}
+          </h2>
+          <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+            {contactData.subtitle}
           </p>
         </motion.div>
 
-        {/* Contact Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {/* Email */}
+        <div className="mt-16 grid lg:grid-cols-[1fr_1.2fr] gap-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="p-6 bg-bg-secondary border border-border-subtle rounded-lg"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="space-y-6"
           >
-            <Mail className="w-6 h-6 text-accent-green mb-3" />
-            <h3 className="font-semibold mb-2">Email</h3>
-            <a
-              href="mailto:iamabdullahsaleem1@gmail.com"
-              className="text-text-secondary hover:text-accent-green transition-colors"
+            <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 space-y-4">
+              <div className="flex items-start gap-3 text-gray-300">
+                <Mail className="w-5 h-5 text-purple-300 mt-1" />
+                <div>
+                  <p className="text-sm text-gray-400">Email</p>
+                  <a
+                    href={`mailto:${contactData.email}`}
+                    className="text-white hover:text-purple-300 transition"
+                  >
+                    {contactData.email}
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 text-gray-300">
+                <Phone className="w-5 h-5 text-purple-300 mt-1" />
+                <div>
+                  <p className="text-sm text-gray-400">Phone</p>
+                  <a
+                    href={`tel:${contactData.phone.replace(/\s+/g, '')}`}
+                    className="text-white hover:text-purple-300 transition"
+                  >
+                    {contactData.phone}
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 text-gray-300">
+                <MapPin className="w-5 h-5 text-purple-300 mt-1" />
+                <div>
+                  <p className="text-sm text-gray-400">Location</p>
+                  <p className="text-white">{contactData.location}</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 text-gray-300">
+                <Globe className="w-5 h-5 text-purple-300 mt-1" />
+                <div>
+                  <p className="text-sm text-gray-400">Portfolio</p>
+                  <a
+                    href={`https://${contactData.portfolio}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-purple-300 transition"
+                  >
+                    {contactData.portfolio}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6">
+              <p className="text-sm uppercase tracking-wide text-gray-400 mb-4">
+                Socials
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {socialLinks.map((link) => {
+                  const Icon = iconMap[link.key as keyof typeof iconMap];
+                  return (
+                    <a
+                      key={link.key}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-purple-200 hover:border-purple-500/40 transition"
+                    >
+                      <Icon className="w-4 h-4" />
+                      {link.label}
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="relative group"
+          >
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-purple-600 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-500" />
+
+            <form
+              onSubmit={handleSubmit}
+              className="relative p-10 rounded-3xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl space-y-6"
             >
-              iamabdullahsaleem1@gmail.com
-            </a>
-          </motion.div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full p-4 bg-transparent border border-white/20 rounded-xl focus:border-pink-500 outline-none text-white peer"
+                    placeholder=" "
+                  />
+                  <label className="absolute left-4 top-4 text-gray-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-pink-400 bg-black px-1 rounded">
+                    Your Name
+                  </label>
+                </div>
 
-          {/* Phone */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="p-6 bg-bg-secondary border border-border-subtle rounded-lg"
-          >
-            <Phone className="w-6 h-6 text-accent-green mb-3" />
-            <h3 className="font-semibold mb-2">Phone</h3>
-            <a
-              href="tel:+923259733970"
-              className="text-text-secondary hover:text-accent-green transition-colors"
-            >
-              +92 325 9733970
-            </a>
-          </motion.div>
-
-          {/* Location */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="p-6 bg-bg-secondary border border-border-subtle rounded-lg"
-          >
-            <MapPin className="w-6 h-6 text-accent-green mb-3" />
-            <h3 className="font-semibold mb-2">Location</h3>
-            <p className="text-text-secondary">
-              Lahore, Pakistan
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Contact Form */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="grid md:grid-cols-3 gap-12"
-        >
-          {/* Form */}
-          <div className="md:col-span-2">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium mb-2">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-bg-secondary border border-border-subtle rounded-lg focus:border-accent-green focus:outline-none transition-colors"
-                  placeholder="Your name"
-                />
+                <div className="relative">
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full p-4 bg-transparent border border-white/20 rounded-xl focus:border-pink-500 outline-none text-white peer"
+                    placeholder=" "
+                  />
+                  <label className="absolute left-4 top-4 text-gray-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-pink-400 bg-black px-1 rounded">
+                    Your Email
+                  </label>
+                </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium mb-2">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-bg-secondary border border-border-subtle rounded-lg focus:border-accent-green focus:outline-none transition-colors"
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  Subject
-                </label>
+              <div className="relative">
                 <select
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-bg-secondary border border-border-subtle rounded-lg focus:border-accent-green focus:outline-none transition-colors"
+                  className="w-full p-4 bg-transparent border border-white/20 rounded-xl focus:border-pink-500 outline-none text-white"
                 >
-                  <option>Job Opportunity</option>
-                  <option>Freelance</option>
-                  <option>Collaboration</option>
-                  <option>Other</option>
+                  {contactData.subjects.map((subject) => (
+                    <option key={subject} value={subject} className="text-black">
+                      {subject}
+                    </option>
+                  ))}
                 </select>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  Message
-                </label>
+              <div className="relative">
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-bg-secondary border border-border-subtle rounded-lg focus:border-accent-green focus:outline-none transition-colors resize-none"
-                  placeholder="Your message here..."
-                ></textarea>
+                  className="w-full p-4 bg-transparent border border-white/20 rounded-xl focus:border-pink-500 outline-none text-white peer resize-none"
+                  placeholder=" "
+                />
+                <label className="absolute left-4 top-4 text-gray-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-pink-400 bg-black px-1 rounded">
+                  Your Message
+                </label>
               </div>
 
               {error && (
-                <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
+                <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-300 text-sm">
                   {error}
                 </div>
               )}
 
               {submitted && (
-                <div className="p-4 bg-accent-green/10 border border-accent-green/30 rounded-lg text-accent-green text-sm">
-                  ✓ Message sent! I'll get back to you within 24 hours.
+                <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-emerald-300 text-sm">
+                  Message sent! I will get back to you soon.
                 </div>
               )}
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full px-6 py-3 bg-accent-green text-bg-primary rounded-lg font-semibold hover:bg-accent-green-dim transition-colors disabled:opacity-50"
+                className="w-full py-4 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 font-semibold text-white hover:scale-[1.02] transition transform duration-300 disabled:opacity-60"
               >
                 {loading ? 'Sending...' : 'Send Message'}
               </button>
             </form>
-          </div>
-
-          {/* Social Links */}
-          <div>
-            <h3 className="font-semibold text-lg mb-6">Connect</h3>
-            <div className="space-y-4">
-              {[
-                {
-                  icon: Code,
-                  label: 'GitHub',
-                  href: 'https://github.com/yourusername',
-                },
-                {
-                  icon: Briefcase,
-                  label: 'LinkedIn',
-                  href: 'https://linkedin.com/in/yourusername',
-                },
-                {
-                  icon: Mail,
-                  label: 'Email',
-                  href: 'mailto:iamabdullahsaleem1@gmail.com',
-                },
-              ].map(({ icon: Icon, label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-4 bg-bg-secondary border border-border-subtle rounded-lg hover:border-accent-green hover:bg-accent-green/5 transition-colors group"
-                >
-                  <Icon className="w-5 h-5 text-text-secondary group-hover:text-accent-green transition-colors" />
-                  <span className="group-hover:text-accent-green transition-colors">
-                    {label}
-                  </span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

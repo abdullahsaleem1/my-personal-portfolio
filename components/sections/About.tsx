@@ -2,158 +2,105 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
+import { aboutData } from '@/lib/portfolio-data';
 
 export default function About() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
-  const skills = {
-    Frontend: ['React', 'Next.js', 'HTML/CSS', 'Tailwind CSS', 'Framer Motion'],
-    Backend: [
-      'Node.js',
-      'Express',
-      'PHP',
-      'Laravel',
-      'Python',
-      'REST APIs',
-    ],
-    Databases: ['MongoDB', 'MySQL', 'PostgreSQL'],
-    Tools: ['Git', 'GitHub', 'VS Code', 'Postman', 'Figma', 'Docker'],
-    Learning: ['TensorFlow', 'scikit-learn', 'OpenCV', 'LangChain'],
-  };
-
-  const timeline = [
-    {
-      year: '2022',
-      event: 'Joined University of Lahore, Department of Software Engineering',
-    },
-    {
-      year: '2023',
-      event: 'First freelance project & IT Consultant role',
-    },
-    {
-      year: '2024',
-      event: 'Built Property Management System with Laravel',
-    },
-    {
-      year: '2024',
-      event: 'Created Smart Vehicle Identification system (Python + OpenCV)',
-    },
-    {
-      year: '2025',
-      event: 'Shifted focus to MERN Stack development',
-    },
-    {
-      year: '2026',
-      event: 'Portfolio launch, targeting DevSinc',
-    },
-  ];
-
   return (
-    <section id="about" className="py-20 px-6">
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="container max-w-6xl mx-auto"
-      >
-        {/* Header */}
-        <motion.div variants={itemVariants} className="mb-16">
-          <h1 className="text-5xl md:text-6xl font-bold font-display mb-6">
-            About Me
-          </h1>
-          <p className="text-text-secondary text-lg max-w-3xl leading-relaxed">
-            I'm a 7th semester Software Engineering student at the University of
-            Lahore, passionate about building scalable applications and exploring
-            the intersection of AI and full-stack development. I'm drawn to
-            companies like DevSinc that move fast, value meritocracy, and treat
-            software as a craft.
-          </p>
-        </motion.div>
-
-        {/* Skills Grid */}
-        <motion.div variants={itemVariants} className="mb-16">
-          <h2 className="text-3xl font-bold font-display mb-8">Skills</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Object.entries(skills).map(([category, items]) => (
-              <div
-                key={category}
-                className="p-6 bg-bg-secondary border border-border-subtle rounded-lg hover:border-accent-green/30 transition-colors"
-              >
-                <h3 className="font-semibold text-accent-green mb-4 text-sm uppercase tracking-wider">
-                  {category}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {items.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 bg-bg-tertiary border border-border-subtle rounded-full text-sm text-text-secondary hover:text-accent-green hover:border-accent-green transition-colors"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+    <section id="about" className="py-24 px-6 relative">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="relative group"
+        >
+          <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-500" />
+          <div className="relative rounded-3xl overflow-hidden border border-white/10 backdrop-blur-xl bg-white/5">
+            <Image
+              src={aboutData.profileImage}
+              alt="Profile"
+              width={520}
+              height={640}
+              className="object-cover w-full h-full hover:scale-105 transition duration-500"
+            />
           </div>
         </motion.div>
 
-        {/* Timeline */}
-        <motion.div variants={itemVariants} className="mb-16">
-          <h2 className="text-3xl font-bold font-display mb-8">Journey</h2>
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-green/20 via-accent-green/10 to-transparent md:-translate-x-1/2"></div>
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="space-y-8"
+        >
+          <div className="space-y-4">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              {aboutData.title}
+            </h2>
+            {aboutData.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="text-gray-400 leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
 
-            {/* Timeline items */}
-            <div className="space-y-8">
-              {timeline.map((item, idx) => (
-                <div key={idx} className="md:grid md:grid-cols-2 md:gap-8">
-                  <div
-                    className={`${idx % 2 === 0 ? 'md:text-right' : 'md:col-start-2'}`}
-                  >
-                    <div className="ml-12 md:ml-0 flex items-start md:flex-col md:items-end gap-4">
-                      {/* Timeline dot */}
-                      <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-accent-green rounded-full -translate-x-1.5 md:-translate-x-1/2 mt-1 md:mt-0 ring-4 ring-bg-primary"></div>
+          <div className="grid grid-cols-2 gap-6">
+            {aboutData.highlights.map((highlight) => (
+              <motion.div
+                key={highlight.label}
+                whileHover={{ scale: 1.05 }}
+                className="p-6 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 text-center"
+              >
+                <h3 className="text-3xl font-bold text-purple-400">
+                  {highlight.value}
+                </h3>
+                <p className="text-gray-400 text-sm mt-2">
+                  {highlight.label}
+                </p>
+              </motion.div>
+            ))}
+          </div>
 
-                      <div>
-                        <span className="text-accent-green font-semibold text-sm">
-                          {item.year}
-                        </span>
-                        <p className="text-text-secondary mt-1">
-                          {item.event}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-white">Key Skills</h3>
+            <div className="flex flex-wrap gap-2">
+              {aboutData.keySkills.map((skill) => (
+                <span
+                  key={skill}
+                  className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-200 rounded-full text-sm border border-purple-500/30"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-semibold text-white">Quick Facts</h3>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {aboutData.facts.map((fact) => (
+                <div
+                  key={fact.label}
+                  className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-gray-300"
+                >
+                  <span className="text-gray-400">{fact.label}:</span> {fact.value}
                 </div>
               ))}
             </div>
           </div>
-        </motion.div>
 
-        {/* Beyond Code */}
-        <motion.div variants={itemVariants} className="p-8 bg-bg-secondary border border-accent-green/20 rounded-lg">
-          <h2 className="text-2xl font-bold font-display mb-4">Beyond Code</h2>
-          <p className="text-text-secondary leading-relaxed">
-            Outside of coding, I'm passionate about learning new technologies,
-            contributing to open-source projects, and mentoring fellow developers.
-            I believe in continuous growth and am actively building in public.
-            Based in Lahore, Pakistan — always up for coffee and tech discussions!
-          </p>
+          {aboutData.resumeUrl && (
+            <Link
+              href={aboutData.resumeUrl}
+              className="inline-block mt-2 px-8 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-purple-500/40 transition"
+            >
+              Download Resume
+            </Link>
+          )}
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
