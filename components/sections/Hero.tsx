@@ -104,7 +104,7 @@ export default function Hero() {
           <div className="text-center space-y-4 p-8">
             <div className="w-32 h-32 mx-auto overflow-hidden rounded-full border-4 border-white shadow-lg">
               <Image 
-                src="/profile-pic.jpg" 
+                src="/abdullah-photo.jpg" 
                 alt="Abdullah Saleem" 
                 width={128} 
                 height={128} 

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import About from '@/components/sections/About';
+import Profile from '@/components/sections/Profile';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -14,7 +14,7 @@ export default function AboutPage() {
     <>
       <Navbar />
       <main className="pt-24">
-        <About />
+        <Profile />
       </main>
       <Footer />
     </>

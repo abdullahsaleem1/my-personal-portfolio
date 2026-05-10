@@ -30,7 +30,7 @@ export default function Profile() {
             <div className="text-center space-y-4">
               <div className="w-36 h-36 mx-auto overflow-hidden rounded-[2rem] border-4 border-white shadow-lg">
                 <Image 
-                  src="/profile-pic.jpg" 
+                  src="/abdullah-photo.jpg" 
                   alt="Abdullah Saleem" 
                   width={144} 
                   height={144} 
