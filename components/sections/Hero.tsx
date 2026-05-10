@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { heroData, socialLinks } from '@/lib/portfolio-data';
 import { FaGithub, FaLinkedin, FaGlobe, FaEnvelope } from 'react-icons/fa';
-import ASLogo from '@/components/common/ASLogo';
+import Image from 'next/image';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   github: FaGithub,
@@ -102,8 +102,14 @@ export default function Hero() {
       >
         <div className="shadow-2xl shadow-gray-200 w-full h-full rounded-3xl bg-gradient-to-br from-picto-primary/20 via-white to-picto-primary-light flex items-center justify-center">
           <div className="text-center space-y-4 p-8">
-            <div className="w-28 h-28 mx-auto flex items-center justify-center">
-              <ASLogo className="w-24 h-24" />
+            <div className="w-32 h-32 mx-auto overflow-hidden rounded-full border-4 border-white shadow-lg">
+              <Image 
+                src="/profile-pic.jpg" 
+                alt="Abdullah Saleem" 
+                width={128} 
+                height={128} 
+                className="w-full h-full object-cover"
+              />
             </div>
             <h3 className="text-2xl font-semibold text-heading">Creative Developer</h3>
             <p className="text-body-text">

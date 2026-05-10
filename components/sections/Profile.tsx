@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { aboutData, socialLinks } from '@/lib/portfolio-data';
 import { FaGithub, FaLinkedin, FaGlobe, FaEnvelope, FaDownload } from 'react-icons/fa';
-import ASLogo from '@/components/common/ASLogo';
+import Image from 'next/image';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   github: FaGithub,
@@ -28,8 +28,14 @@ export default function Profile() {
         <div className="2xl:max-w-[424px] w-auto h-auto 2xl:max-h-[504px]">
           <div className="max-w-[424px] h-[468px] overflow-hidden rounded-xl bg-gradient-to-br from-picto-primary/10 via-soft-white to-picto-primary-light flex items-center justify-center">
             <div className="text-center space-y-4">
-              <div className="w-32 h-32 mx-auto flex items-center justify-center shadow-lg rounded-3xl">
-                <ASLogo className="w-28 h-28" />
+              <div className="w-36 h-36 mx-auto overflow-hidden rounded-[2rem] border-4 border-white shadow-lg">
+                <Image 
+                  src="/profile-pic.jpg" 
+                  alt="Abdullah Saleem" 
+                  width={144} 
+                  height={144} 
+                  className="w-full h-full object-cover object-[center_top]"
+                />
               </div>
               <p className="text-xl font-semibold text-heading">Abdullah Saleem</p>
               <p className="text-body-text text-sm">Software Engineer</p>
