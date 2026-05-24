@@ -6,7 +6,6 @@ export const navLinks = [
   { label: 'Skills', href: '/#skills' },
   { label: 'Experience', href: '/#experience' },
   { label: 'Education', href: '/#education' },
-  { label: 'Blog', href: '/#blog' },
   { label: 'Contact', href: '/#contact' },
 ];
 
@@ -14,14 +13,14 @@ export const socialLinks = [
   {
     key: 'github',
     label: 'GitHub',
-    href: 'https://github.com/yourusername',
+    href: 'https://github.com/abdullahsaleem1',
     icon: 'github',
     color: '#ffffff',
   },
   {
     key: 'linkedin',
     label: 'LinkedIn',
-    href: 'https://linkedin.com/in/yourusername',
+    href: 'https://www.linkedin.com/in/abdullah-saleem-8707b0403',
     icon: 'linkedin',
     color: '#0A66C2',
   },
@@ -32,13 +31,6 @@ export const socialLinks = [
     icon: 'gmail',
     color: '#EA4335',
   },
-  {
-    key: 'portfolio',
-    label: 'Portfolio',
-    href: 'https://abdullahsaleemportfolio.netlify.app',
-    icon: 'globe',
-    color: '#38bdf8',
-  },
 ];
 
 export const heroData = {
@@ -46,7 +38,7 @@ export const heroData = {
   name: 'Abdullah Saleem',
   role: 'Software Engineer',
   summary:
-    'Building full-stack MERN applications and exploring AI/ML. 7th semester Software Engineering student at the University of Lahore, Lahore, Pakistan.',
+    'Proficient in Python, PHP, Java, JavaScript, and C++. Expert in developing CRUD applications and complex AI-integrated automation systems. Experienced in full-cycle data pipelines & collaborating with US-based clients.',
   primaryCta: { label: 'View Projects', href: '/#projects' },
   secondaryCta: { label: 'Download CV', href: '/resume/Abdullah_Saleem_CV.pdf' },
 };
@@ -54,67 +46,75 @@ export const heroData = {
 export const aboutData = {
   title: 'Who I Am',
   paragraphs: [
-    "I'm a 7th semester Software Engineering student at the University of Lahore, obsessed with building things that work at scale. I care about shipping clean, reliable software and communicating clearly with the people I build for.",
-    "I'm drawn to companies that move fast, value meritocracy, and treat software as a craft - not just a deliverable.",
-    "Outside of code, I'm growing my skills in AI/ML, sharpening my Python, and exploring how intelligent systems can augment the products I build.",
+    "I'm a Software Engineer proficient in a multi-language stack including Python, PHP, Java, JavaScript, and C++. I specialize in developing CRUD applications with Laravel and complex AI-integrated automation systems.",
+    "I have hands-on experience managing full-cycle data pipelines — from web scraping (HTTPX/Selenium) to relational database design (SQLite/SQL). I've collaborated with US-based clients to translate complex technical requirements into efficient, scalable software solutions.",
+    "Currently pursuing my BS in Software Engineering at the University of Lahore, I'm passionate about building robust backend systems, automation tools, and AI-powered applications that solve real-world problems.",
   ],
   profileImage: '/profile-placeholder.svg',
   resumeUrl: '/resume/Abdullah_Saleem_CV.pdf',
   highlights: [
-    { label: 'Semester', value: '7th' },
-    { label: 'Projects', value: '6' },
+    { label: 'CGPA', value: '3.00' },
+    { label: 'Projects', value: '4+' },
   ],
   facts: [
-    { label: 'Location', value: 'Lahore, Pakistan' },
+    { label: 'Location', value: 'Mughalpura, Lahore, Pakistan' },
     { label: 'Degree', value: 'BSc Software Engineering' },
     { label: 'University', value: 'University of Lahore' },
     { label: 'Email', value: 'iamabdullahsaleem1@gmail.com' },
     { label: 'Phone', value: '+92 325 9733970' },
-    { label: 'Portfolio', value: 'abdullahsaleemportfolio.netlify.app' },
+    { label: 'Portfolio', value: 'abdullahsaleem.vercel.app' },
     { label: 'Status', value: 'Open to roles' },
   ],
   keySkills: [
-    'MERN Stack',
-    'Laravel',
     'Python',
+    'Laravel',
+    'MERN Stack',
+    'Flask',
     'REST APIs',
+    'Web Scraping',
     'AI/ML',
-    'Client Communication',
+    'Automation',
   ],
 };
 
 export const skillsData = {
-  title: 'Skills and Technologies',
+  title: 'Skills & Technologies',
   legend: [
     { label: 'Confident', color: 'blue' },
     { label: 'Learning', color: 'orange' },
   ],
   skills: [
-    { name: 'React.js', category: 'Frontend', level: 85, status: 'confident' },
-    { name: 'Next.js', category: 'Frontend', level: 82, status: 'confident' },
-    { name: 'HTML / CSS', category: 'Frontend', level: 88, status: 'confident' },
-    { name: 'Tailwind CSS', category: 'Frontend', level: 84, status: 'confident' },
-    { name: 'TypeScript', category: 'Frontend', level: 78, status: 'learning' },
-    { name: 'Node.js', category: 'Backend', level: 82, status: 'confident' },
-    { name: 'Express.js', category: 'Backend', level: 80, status: 'confident' },
-    { name: 'PHP', category: 'Backend', level: 78, status: 'confident' },
-    { name: 'Laravel', category: 'Backend', level: 80, status: 'confident' },
-    { name: 'Python', category: 'Backend', level: 76, status: 'confident' },
-    { name: 'MongoDB', category: 'Databases', level: 78, status: 'confident' },
-    { name: 'MySQL', category: 'Databases', level: 78, status: 'confident' },
-    { name: 'PostgreSQL', category: 'Databases', level: 70, status: 'learning' },
-    { name: 'Git / GitHub', category: 'Tools and Cloud', level: 82, status: 'confident' },
-    { name: 'Postman', category: 'Tools and Cloud', level: 76, status: 'confident' },
-    { name: 'Figma', category: 'Tools and Cloud', level: 70, status: 'learning' },
-    { name: 'Vercel / CI-CD', category: 'Tools and Cloud', level: 72, status: 'learning' },
-    { name: 'OpenCV', category: 'AI / ML', level: 68, status: 'learning' },
-    { name: 'TensorFlow', category: 'AI / ML', level: 62, status: 'learning' },
-    { name: 'scikit-learn', category: 'AI / ML', level: 64, status: 'learning' },
-    { name: 'LangChain', category: 'AI / ML', level: 58, status: 'learning' },
-    { name: 'REST API Design', category: 'Core Skills', level: 82, status: 'confident' },
-    { name: 'PHP CRUD', category: 'Core Skills', level: 78, status: 'confident' },
-    { name: 'Client Communication', category: 'Core Skills', level: 84, status: 'confident' },
-    { name: 'Problem Solving', category: 'Core Skills', level: 86, status: 'confident' },
+    // Programming Languages
+    { name: 'Python', category: 'Languages', level: 88, status: 'confident' },
+    { name: 'JavaScript', category: 'Languages', level: 85, status: 'confident' },
+    { name: 'PHP', category: 'Languages', level: 82, status: 'confident' },
+    { name: 'Java', category: 'Languages', level: 78, status: 'confident' },
+    { name: 'C / C++', category: 'Languages', level: 75, status: 'confident' },
+    { name: 'HTML5 / CSS3', category: 'Languages', level: 88, status: 'confident' },
+    // Frameworks & Libraries
+    { name: 'Laravel', category: 'Frameworks', level: 84, status: 'confident' },
+    { name: 'Flask', category: 'Frameworks', level: 80, status: 'confident' },
+    { name: 'Bootstrap', category: 'Frameworks', level: 82, status: 'confident' },
+    { name: 'Tailwind CSS', category: 'Frameworks', level: 84, status: 'confident' },
+    { name: 'React.js', category: 'Frameworks', level: 80, status: 'confident' },
+    { name: 'Node.js', category: 'Frameworks', level: 78, status: 'confident' },
+    { name: 'Express.js', category: 'Frameworks', level: 78, status: 'confident' },
+    { name: 'Selenium', category: 'Frameworks', level: 82, status: 'confident' },
+    { name: 'GraphQL', category: 'Frameworks', level: 76, status: 'confident' },
+    { name: 'REST API', category: 'Frameworks', level: 86, status: 'confident' },
+    // Databases
+    { name: 'MySQL', category: 'Databases', level: 82, status: 'confident' },
+    { name: 'SQLite', category: 'Databases', level: 80, status: 'confident' },
+    { name: 'MongoDB', category: 'Databases', level: 75, status: 'learning' },
+    // Tools & Technologies
+    { name: 'Git / GitHub', category: 'Tools', level: 84, status: 'confident' },
+    { name: 'VS Code', category: 'Tools', level: 90, status: 'confident' },
+    { name: 'Postman', category: 'Tools', level: 80, status: 'confident' },
+    { name: 'Figma', category: 'Tools', level: 70, status: 'learning' },
+    { name: 'Discord API', category: 'Tools', level: 78, status: 'confident' },
+    // AI/ML
+    { name: 'OpenCV', category: 'AI / ML', level: 75, status: 'confident' },
+    { name: 'TensorFlow', category: 'AI / ML', level: 70, status: 'learning' },
   ],
 };
 
@@ -122,6 +122,7 @@ type ExperienceItem = {
   company: string;
   position: string;
   description: string;
+  bullets?: string[];
   startDate: string;
   endDate?: string;
   current: boolean;
@@ -130,96 +131,75 @@ type ExperienceItem = {
 
 export const experienceData: ExperienceItem[] = [
   {
-    company: 'Freelance / Independent',
-    position: 'IT Consultant',
+    company: 'BitBash',
+    position: 'Software Engineer Intern',
     description:
-      'Advising clients on technology solutions, understanding business requirements, and translating them into actionable digital strategies. Hands-on support for software setup, troubleshooting, and workflow automation.',
-    startDate: '2023-01-01',
-    current: true,
-    location: 'Lahore, Pakistan',
-  },
-  {
-    company: 'Freelance / Independent',
-    position: 'Sales Agent',
-    description:
-      'Client-facing sales of tech products and services. Developed strong communication skills by identifying client pain points, presenting solutions, and closing deals. This directly informs how I write code with the end-user in mind.',
-    startDate: '2023-01-01',
-    current: true,
-    location: 'Lahore, Pakistan',
+      'Worked on automation tools, data pipelines, and web scraping systems in an agile environment with senior developers.',
+    bullets: [
+      'Automated 3 internal data workflows in Python, cutting manual processing time by ~70% and eliminating data entry errors.',
+      'Built a hybrid scraper (HTTPX + SeleniumBase) achieving 100–200ms response times, sustaining 100+ hours of continuous uptime.',
+      'Architected modular notification systems by integrating third-party APIs (Discord) for real-time alerts.',
+      'Implemented persistent storage using SQLite for data deduplication and historical records.',
+      'Collaborated with senior developers following best practices for code maintainability and scalability.',
+    ],
+    startDate: '2026-03-01',
+    endDate: '2026-04-30',
+    current: false,
+    location: 'DHA Rahbar, Lahore',
   },
 ];
 
 export const educationData = [
   {
-    institution: 'University of Lahore, Lahore, Pakistan',
+    institution: 'University of Lahore',
     degree: 'Bachelor of Science',
     field: 'Software Engineering',
-    startDate: '2022-01-01',
-    endDate: '2026-01-01',
+    startDate: '2023-02-01',
+    endDate: '2027-01-01',
     current: true,
     description:
-      '7th semester. Section U. Student ID: 70135356. Relevant work: Property Management System (Laravel + PHP), Smart Vehicle Identification System (Python + OpenCV + ML).',
+      'Maintained a 3.00 Cumulative GPA, achieving a peak 3.55 SGPA in latest coursework. Mastered core Software Engineering principles including SDLC methodologies, systems design, and database management. Developed technical proficiency through hands-on collaborative academic projects.',
   },
 ];
 
 export const projectsData = [
   {
-    title: 'Property Management System',
+    title: 'Intelligent Vehicle Verification & Surveillance Platform',
     description:
-      'A full CRUD web application for managing real estate properties, listings, tenants, and admin workflows. Built during university.',
-    status: 'Built',
-    stack: ['Laravel', 'PHP', 'MySQL', 'HTML/CSS'],
-    image: '/projects/property-management.svg',
-    githubUrl: '',
-    liveUrl: '',
-  },
-  {
-    title: 'Smart Vehicle Identification System',
-    description:
-      'Computer vision system that detects and tracks vehicles using image processing and machine learning techniques.',
-    status: 'Built',
-    stack: ['Python', 'OpenCV', 'Machine Learning'],
+      'AI-powered platform achieving ~85% ANPR accuracy and 60+ FPS throughput. Features web dashboard (React.js), mobile app (React Native), Node.js/Express backend, and MongoDB database with real-time Socket.io alerts.',
+    status: 'FYP – In Progress',
+    stack: ['React.js', 'React Native', 'Node.js', 'MongoDB', 'OpenCV', 'TensorFlow', 'Python'],
     image: '/projects/vehicle-identification.svg',
     githubUrl: '',
     liveUrl: '',
   },
   {
-    title: 'Full-Stack Task Manager',
+    title: 'Upwork Discord Job Bot',
     description:
-      'MERN stack productivity app with auth, real-time updates, and team collaboration features.',
-    status: 'In Progress',
-    stack: ['MongoDB', 'Express', 'React', 'Node.js'],
+      'Reverse-engineered Upwork\'s private GraphQL API to build a Discord bot monitoring multiple job categories with <5s latency and zero duplicates via SQLite deduplication. Features hybrid architecture with 100+ hour stability.',
+    status: 'Completed',
+    stack: ['Python', 'discord.py', 'Selenium', 'GraphQL', 'SQLite', 'Socket.io'],
     image: '/projects/placeholder.svg',
     githubUrl: '',
     liveUrl: '',
   },
   {
-    title: 'Real-Time Chat App',
+    title: 'Online Book Store E-Commerce Platform',
     description:
-      'WebSocket-powered messaging app with rooms, presence indicators, and message history persistence.',
-    status: 'In Progress',
-    stack: ['MERN', 'Socket.IO'],
+      'Designed a normalized 9-entity relational schema (SQLAlchemy + Flask) with full order lifecycle — cart, checkout, review — with JWT-secured role-based access control and optimized query patterns.',
+    status: 'Completed',
+    stack: ['Python', 'Flask', 'JWT Auth', 'SQLAlchemy', 'SQL'],
     image: '/projects/placeholder.svg',
     githubUrl: '',
     liveUrl: '',
   },
   {
-    title: 'E-Commerce Dashboard',
+    title: 'Property Management System',
     description:
-      'Admin dashboard for managing products, orders, and analytics built with Next.js and MongoDB.',
-    status: 'In Progress',
-    stack: ['Next.js', 'MongoDB', 'Tailwind CSS'],
-    image: '/projects/placeholder.svg',
-    githubUrl: '',
-    liveUrl: '',
-  },
-  {
-    title: 'AI Text Summarizer',
-    description:
-      'Python FastAPI backend with a React frontend that summarizes long documents using NLP.',
-    status: 'Phase 2',
-    stack: ['Python', 'FastAPI', 'React'],
-    image: '/projects/placeholder.svg',
+      'Full-stack platform with Laravel 12 backend and responsive frontend. Implemented role-based access control (Admin, Agent, Client) with Sanctum auth, comprehensive CRUD operations, advanced search/filtering, and role-specific dashboards.',
+    status: 'Completed',
+    stack: ['Laravel 12', 'PHP 8.2', 'MySQL', 'Eloquent ORM', 'Bootstrap', 'JavaScript'],
+    image: '/projects/property-management.svg',
     githubUrl: '',
     liveUrl: '',
   },
@@ -231,7 +211,7 @@ export const contactData = {
     "Have an opportunity, a question, or just want to chat? I'd love to hear from you.",
   email: 'iamabdullahsaleem1@gmail.com',
   phone: '+92 325 9733970',
-  location: 'H #40, St #4, Tauheed Park, Gunj, Mughalpura, Lahore 54840',
-  portfolio: 'abdullahsaleemportfolio.netlify.app',
+  location: 'Mughalpura, Lahore, Punjab, 54840, Pakistan',
+  portfolio: 'abdullahsaleem.vercel.app',
   subjects: ['Job Opportunity', 'Freelance', 'Collaboration', 'Other'],
 };

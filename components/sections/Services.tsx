@@ -6,21 +6,21 @@ import { motion } from 'framer-motion';
 const rolesData = [
   {
     id: 1,
-    title: 'Full-Stack Development',
+    title: 'Full-Stack Web Development',
     description:
-      'I build responsive, high-performance web applications using MERN Stack, Next.js, and Laravel — ensuring accessibility, scalability, and maintainability.',
+      'I build responsive, high-performance web applications using Laravel, Flask, and the MERN Stack — focusing on clean architecture, RESTful APIs, and role-based access control.',
   },
   {
     id: 2,
-    title: 'Backend & API Design',
+    title: 'Automation & Web Scraping',
     description:
-      'I architect RESTful APIs and robust backend systems with Node.js, Express, PHP/Laravel, and Python — focusing on clean code and efficient data flow.',
+      'I design robust automation systems and data pipelines using Python, HTTPX, Selenium, and GraphQL — from reverse-engineering APIs to building production-grade scrapers with 100+ hour uptime.',
   },
   {
     id: 3,
-    title: 'AI/ML Exploration',
+    title: 'AI/ML Integration',
     description:
-      'I explore how intelligent systems can augment products, experimenting with OpenCV, TensorFlow, scikit-learn, and LangChain to solve real problems.',
+      'I build AI-powered features using OpenCV and TensorFlow — from vehicle identification systems with ~85% ANPR accuracy to intelligent automation that augments software products.',
   },
 ];
 
@@ -61,15 +61,15 @@ export default function Services() {
       id="services"
     >
       <div className="flex flex-col justify-between h-fit md:pe-8 lg:pe-36 max-md:text-center my-auto">
-        <p className="section-title max-md:text-center">What I Do?</p>
+        <p className="section-title max-md:text-center">What I Do</p>
         <div className="mt-6 text-sm">
           <p className="text-xs sm:text-lg font-normal text-gray-400 mb-4">
-            I specialize in building full-stack web applications, designing efficient APIs,
-            and exploring how AI/ML can augment the products I build.
+            I specialize in building full-stack web applications, designing automation systems,
+            and integrating AI/ML capabilities into real-world products.
           </p>
           <p className="text-xs sm:text-lg font-normal text-gray-400">
-            My approach combines clean code with thoughtful architecture to deliver
-            solutions that are both performant and user-friendly.
+            My approach combines clean code with scalable architecture, informed by
+            hands-on experience collaborating with US-based clients on production systems.
           </p>
         </div>
         <a

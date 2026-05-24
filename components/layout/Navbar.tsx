@@ -8,10 +8,9 @@ import ASLogo from '@/components/common/ASLogo';
 const navItems = [
   { id: 1, name: 'Home', href: '#home' },
   { id: 2, name: 'About', href: '#about' },
-  { id: 3, name: 'Process', href: '#work-process' },
-  { id: 4, name: 'Portfolio', href: '#projects' },
-  { id: 5, name: 'Blog', href: '#blog' },
-  { id: 6, name: 'Services', href: '#services' },
+  { id: 3, name: 'Projects', href: '#projects' },
+  { id: 4, name: 'Skills', href: '#skills' },
+  { id: 5, name: 'Experience', href: '#experience' },
 ];
 
 export default function Navbar() {

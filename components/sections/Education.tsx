@@ -37,6 +37,9 @@ export default function Education() {
             <p className="text-picto-primary font-medium mt-1">
               {edu.institution}
             </p>
+            <p className="text-sm text-body-text mt-1">
+              📍 Defence Road, Lahore
+            </p>
             <p className="text-sm text-body-text mt-2">
               {formatDate(edu.startDate)} - {edu.current ? 'Present' : formatDate(edu.endDate || '')}
             </p>

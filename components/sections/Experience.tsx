@@ -48,6 +48,16 @@ export default function Experience() {
                 {exp.description}
               </p>
             )}
+            {exp.bullets && exp.bullets.length > 0 && (
+              <ul className="mt-3 space-y-2 list-none pl-0">
+                {exp.bullets.map((bullet, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-body-text leading-relaxed">
+                    <span className="text-picto-primary mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-picto-primary inline-block" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </motion.div>
         ))}
       </div>

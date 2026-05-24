@@ -8,33 +8,35 @@ export const metadata: Metadata = {
     template: '%s | Abdullah Saleem',
   },
   description:
-    'Software Engineering student at University of Lahore. Full-stack developer specializing in MERN Stack, Laravel, and Python. Based in Lahore, Pakistan.',
+    'Software Engineer proficient in Python, PHP, Java, JavaScript, and C++. Expert in full-stack development with Laravel & Flask, AI-integrated automation systems, and web scraping pipelines. Based in Lahore, Pakistan.',
   keywords: [
     'Abdullah Saleem',
     'Software Engineer Lahore',
-    'MERN Stack Developer',
+    'Python Developer',
     'Laravel Developer',
     'Full Stack Developer',
+    'Web Scraping',
+    'Automation Engineer',
+    'Flask Developer',
+    'AI ML Developer',
     'University of Lahore',
-    'Python Developer',
-    'Web Developer Pakistan',
   ],
   authors: [{ name: 'Abdullah Saleem' }],
   creator: 'Abdullah Saleem',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://abdullahsaleem.dev',
+    url: 'https://abdullahsaleem.vercel.app',
     title: 'Abdullah Saleem — Software Engineer',
     description:
-      'Full-stack developer specializing in MERN Stack, Laravel, and Python.',
+      'Software Engineer specializing in Python, Laravel, Flask, and AI-integrated automation systems.',
     siteName: 'Abdullah Saleem Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Abdullah Saleem — Software Engineer',
     description:
-      'Full-stack developer specializing in MERN Stack and Laravel.',
+      'Software Engineer specializing in Python, Laravel, and automation systems.',
   },
   robots: {
     index: true,

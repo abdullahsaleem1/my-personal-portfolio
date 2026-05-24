@@ -4,10 +4,10 @@ import ASLogo from '@/components/common/ASLogo';
 const navItems = [
   { id: 1, name: 'Home', url: '#home' },
   { id: 2, name: 'About', url: '#about' },
-  { id: 3, name: 'Process', url: '#work-process' },
-  { id: 4, name: 'Portfolio', url: '#projects' },
-  { id: 5, name: 'Blog', url: '#blog' },
-  { id: 6, name: 'Services', url: '#services' },
+  { id: 3, name: 'Projects', url: '#projects' },
+  { id: 4, name: 'Skills', url: '#skills' },
+  { id: 5, name: 'Experience', url: '#experience' },
+  { id: 6, name: 'Education', url: '#education' },
   { id: 7, name: 'Contact', url: '#contact' },
 ];
 

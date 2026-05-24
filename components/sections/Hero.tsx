@@ -14,9 +14,9 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 const informationSummaryData = [
-  { id: 1, title: 'Semester', description: '7th' },
-  { id: 2, title: 'Projects Completed', description: '6+' },
-  { id: 3, title: 'Technologies', description: '20+' },
+  { id: 1, title: 'CGPA', description: '3.00' },
+  { id: 2, title: 'Projects Completed', description: '4+' },
+  { id: 3, title: 'Technologies', description: '15+' },
 ];
 
 export default function Hero() {
@@ -40,8 +40,8 @@ export default function Hero() {
             </span>
           </p>
           <p className="text-sm lg:text-lg my-6 text-body-text">
-            I&apos;m a <span className="bg-highlight">Full-Stack Developer</span>{' '}
-            and <span className="bg-highlight">Software Engineer</span> based in
+            I&apos;m a <span className="bg-highlight">Software Engineer</span>{' '}
+            and <span className="bg-highlight">Full-Stack Developer</span> based in
             Lahore, Pakistan. {heroData.summary}
           </p>
           <p className="text-center lg:text-start">
@@ -111,12 +111,12 @@ export default function Hero() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h3 className="text-2xl font-semibold text-heading">Creative Developer</h3>
+            <h3 className="text-2xl font-semibold text-heading">Software Engineer</h3>
             <p className="text-body-text">
-              Building modern web apps with MERN Stack & Next.js
+              Building automation systems, full-stack apps & AI solutions
             </p>
             <div className="flex flex-wrap gap-2 justify-center mt-4">
-              {['React', 'Node.js', 'Laravel', 'Python'].map((tag) => (
+              {['Python', 'Laravel', 'Flask', 'React'].map((tag) => (
                 <span
                   key={tag}
                   className="px-3 py-1 bg-picto-primary/10 text-picto-primary rounded-full text-sm font-medium"
