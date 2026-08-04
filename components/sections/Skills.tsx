@@ -15,62 +15,35 @@ export default function Skills() {
     >
       <div className="text-center mb-12">
         <p className="section-title mb-6">{skillsData.title}</p>
-        <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
-          {skillsData.legend.map((item) => (
-            <div key={item.label} className="flex items-center gap-2">
-              <span
-                className={`w-2.5 h-2.5 rounded-full ${
-                  item.color === 'blue' ? 'bg-picto-primary' : 'bg-amber-400'
-                }`}
-              />
-              <span>{item.label}</span>
-            </div>
-          ))}
-        </div>
+        <p className="text-sm text-gray-400 max-w-lg mx-auto">
+          Technologies I work with regularly, organized by domain.
+        </p>
       </div>
 
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {skillsData.skills.map((skill, index) => (
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {skillsData.categories.map((category, index) => (
           <motion.div
-            key={`${skill.category}-${skill.name}`}
+            key={category.name}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.03 }}
+            transition={{ delay: index * 0.08 }}
             viewport={{ once: true }}
-            className="relative p-5 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+            className="p-6 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
           >
             <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-picto-primary/5 to-picto-primary-light/10 opacity-0 group-hover:opacity-100 transition duration-500" />
-
-            <div className="relative z-10 space-y-2">
-              <div className="flex items-center justify-between">
-                <h3 className="text-base font-semibold text-heading">
-                  {skill.name}
-                </h3>
-                <span
-                  className={`w-2.5 h-2.5 rounded-full ${
-                    skill.status === 'confident' ? 'bg-picto-primary' : 'bg-amber-400'
-                  }`}
-                />
-              </div>
-
-              <p className="text-sm text-body-text">{skill.category}</p>
-
-              <div className="mt-3">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-xs text-body-text">Proficiency</span>
-                  <span className="text-xs text-picto-primary font-medium">
-                    {skill.level}%
+            <div className="relative z-10">
+              <h3 className="text-lg font-semibold text-heading mb-4">
+                {category.name}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1.5 bg-picto-primary/8 text-picto-primary rounded-full text-sm font-medium"
+                  >
+                    {skill}
                   </span>
-                </div>
-                <div className="w-full bg-gray-100 rounded-full h-2">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1, delay: index * 0.03 }}
-                    viewport={{ once: true }}
-                    className="h-2 rounded-full bg-gradient-to-r from-picto-primary to-picto-primary-dark"
-                  />
-                </div>
+                ))}
               </div>
             </div>
           </motion.div>

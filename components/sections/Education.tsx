@@ -44,7 +44,7 @@ export default function Education() {
               {formatDate(edu.startDate)} - {edu.current ? 'Present' : formatDate(edu.endDate || '')}
             </p>
             {edu.description && (
-              <p className="text-body-text mt-4 text-sm leading-relaxed">
+              <p className="text-body-text mt-4 text-sm leading-relaxed text-justify">
                 {edu.description}
               </p>
             )}

@@ -1,0 +1,90 @@
+---
+title: Upwork Discord Job Bot
+tagline: Automated job monitoring via reverse-engineered GraphQL API with Discord notifications
+description: Built a Discord bot that monitors Upwork job postings in real-time by reverse-engineering their private GraphQL API, delivering alerts with sub-5-second latency.
+stack: [Python, discord.py, Selenium, GraphQL, SQLite, Socket.io]
+tags: [Python, Automation, Web Scraping]
+status: archived
+featured: false
+github: https://github.com/abdullahsaleem1
+date: 2025-03-15
+---
+
+## The Problem
+
+Manually checking Upwork for relevant job postings was time-consuming and meant missing early-bird opportunities. Existing job boards were either too slow or didn't cover niche categories.
+
+## My Role
+
+I designed and built the entire system end-to-end:
+- Reverse-engineered Upwork's private GraphQL API
+- Built the Discord bot integration
+- Implemented SQLite-based deduplication
+- Achieved 100+ hour continuous uptime
+
+## Technical Decisions
+
+### Why Reverse-Engineer the API?
+
+Upwork doesn't offer a public job feed API for this use case. By analyzing network requests, I discovered their internal GraphQL endpoint and built a custom scraper around it.
+
+### Architecture
+
+```
+upwork_graphql_api/
+├── scraper.py        GraphQL query engine
+├── bot.py            Discord bot with slash commands
+├── dedup.py          SQLite deduplication layer
+├── scheduler.py      Rate-limiting and retry logic
+└── config.py         Environment configuration
+```
+
+## Hardest Challenge
+
+**Challenge**: Avoiding rate limits and detection while maintaining sub-5-second latency.
+
+**Solution**:
+I implemented exponential backoff, request fingerprinting rotation, and a deduplication layer using SQLite to ensure zero duplicate alerts across restarts.
+
+```python
+import sqlite3
+from datetime import datetime
+
+class JobDeduplicator:
+    def __init__(self, db_path="jobs.db"):
+        self.conn = sqlite3.connect(db_path)
+        self._create_table()
+
+    def _create_table(self):
+        self.conn.execute("""
+            CREATE TABLE IF NOT EXISTS seen_jobs (
+                job_id TEXT PRIMARY KEY,
+                first_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        self.conn.commit()
+
+    def is_duplicate(self, job_id: str) -> bool:
+        cursor = self.conn.execute(
+            "SELECT 1 FROM seen_jobs WHERE job_id = ?", (job_id,)
+        )
+        if cursor.fetchone():
+            return True
+        self.conn.execute("INSERT INTO seen_jobs (job_id) VALUES (?)", (job_id,))
+        self.conn.commit()
+        return False
+```
+
+## Results
+
+- **<5 second** alert latency from posting to Discord notification
+- **Zero duplicates** across 100+ hours of continuous operation
+- **Multiple job categories** monitored simultaneously
+- **Stable architecture** handling rate limits gracefully
+
+## What I Learned
+
+1. **API reverse engineering** requires patience and systematic analysis
+2. **Deduplication** is harder than it looks at scale
+3. **Resilient systems** need graceful degradation, not just happy-path logic
+4. **Rate limiting** is a real engineering constraint that shapes architecture
