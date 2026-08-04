@@ -2,7 +2,7 @@ import Navbar from '@/components/layout/Navbar';
 import Hero from '@/components/sections/Hero';
 import Profile from '@/components/sections/Profile';
 import Projects from '@/components/sections/Projects';
-import Services from '@/components/sections/Services';
+import WorkProcess from '@/components/sections/WorkProcess';
 import Skills from '@/components/sections/Skills';
 import Experience from '@/components/sections/Experience';
 import Education from '@/components/sections/Education';
@@ -22,9 +22,7 @@ export default function Home() {
           </div>
         </div>
         <Projects />
-        <div className="bg-soft-white">
-          <Services />
-        </div>
+        <WorkProcess />
         <Skills />
         <Experience />
         <Education />

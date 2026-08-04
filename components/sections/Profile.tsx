@@ -20,31 +20,34 @@ export default function Profile() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
       viewport={{ once: true }}
-      className="relative mx-4 2xl:mx-0.5 -bottom-20 lg:-bottom-28 z-10 rounded-2xl bg-white drop-shadow-2xl max-xl:mb-5 shadow-white xl:p-28 lg:p-20 md:p-16 sm:p-10 p-4"
+      className="relative mx-4 2xl:mx-0.5 -bottom-20 lg:-bottom-28 z-10 rounded-2xl bg-white drop-shadow-2xl max-xl:mb-5 shadow-white xl:p-20 lg:p-16 md:p-12 sm:p-8 p-4 border border-gray-100"
       id="about"
     >
-      <div className="flex max-md:flex-col justify-between items-center gap-6">
+      <div className="flex max-md:flex-col justify-between items-center gap-10">
         {/* Profile visual */}
-        <div className="2xl:max-w-[424px] w-auto h-auto 2xl:max-h-[504px]">
-          <div className="max-w-[424px] h-[468px] overflow-hidden rounded-xl bg-gradient-to-br from-picto-primary/10 via-soft-white to-picto-primary-light flex items-center justify-center">
-            <div className="text-center space-y-4">
-              <div className="w-36 h-36 mx-auto overflow-hidden rounded-[2rem] border-4 border-white shadow-lg">
+        <div className="w-full md:w-auto flex flex-col items-center">
+          <div className="max-w-[460px] w-full md:w-[420px] h-[480px] overflow-hidden rounded-2xl bg-gradient-to-br from-picto-primary/10 via-soft-white to-picto-primary-light flex items-center justify-center border border-gray-100">
+            <div className="text-center space-y-5">
+              <div className="w-48 h-48 sm:w-56 sm:h-56 mx-auto overflow-hidden rounded-full border-4 border-white shadow-xl hover:scale-[1.03] transition-transform duration-500">
                 <Image 
                   src="/abdullah-photo.jpg" 
                   alt="Abdullah Saleem" 
-                  width={144} 
-                  height={144} 
+                  width={224} 
+                  height={224} 
                   className="w-full h-full object-cover object-[center_top]"
+                  priority
                 />
               </div>
-              <p className="text-xl font-semibold text-heading">Abdullah Saleem</p>
-              <p className="text-body-text text-sm">Software Engineer</p>
+              <div>
+                <p className="text-2xl font-bold text-heading">Abdullah Saleem</p>
+                <p className="text-body-text text-sm font-medium mt-1">Software Engineer</p>
+              </div>
             </div>
           </div>
           {/* Social media section */}
-          <div className="relative bottom-9">
+          <div className="relative bottom-8">
             <div className="flex justify-center">
-              <div className="px-6 max-w-[264px] py-3 z-50 text-center bg-white rounded-[4px] center shadow-2xl drop-shadow-2xl shadow-white flex gap-1">
+              <div className="px-6 py-3 z-50 text-center bg-white rounded-xl shadow-xl flex gap-2 border border-gray-100">
                 {socialLinks.map((link) => {
                   const Icon = iconMap[link.icon];
                   if (!Icon) return null;
@@ -54,7 +57,7 @@ export default function Profile() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-picto-primary hover:bg-picto-primary hover:text-white p-2 sm:p-3 rounded-md no-underline"
+                      className="text-picto-primary hover:bg-picto-primary hover:text-white p-2.5 rounded-md no-underline transition-colors duration-300"
                       aria-label={link.label}
                     >
                       <Icon className="text-xl w-5 h-5" />
@@ -67,24 +70,24 @@ export default function Profile() {
         </div>
 
         {/* Text content */}
-        <div className="max-sm:w-full w-[33rem]">
-          <h2 className="text-2xl sm:text-3xl lg:text-[38px] max-md:text-center font-semibold mb-8 text-heading">
+        <div className="w-full md:flex-1 max-w-xl">
+          <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-bold mb-6 text-heading max-md:text-center">
             {aboutData.title}
           </h2>
-          <div className="text-sm sm:text-base lg:text-lg font-normal max-md:text-center text-gray-600">
+          <div className="text-sm sm:text-base lg:text-lg font-normal text-justify text-gray-600 space-y-4">
             {aboutData.paragraphs.map((paragraph, index) => (
-              <p key={index} className={index > 0 ? 'mt-3' : ''}>
+              <p key={index} className="text-justify leading-relaxed">
                 {paragraph}
               </p>
             ))}
           </div>
 
           {/* Key Skills */}
-          <div className="mt-6 flex flex-wrap gap-2 max-md:justify-center">
+          <div className="mt-8 flex flex-wrap gap-2 max-md:justify-center">
             {aboutData.keySkills.map((skill) => (
               <span
                 key={skill}
-                className="px-3 py-1 bg-picto-primary/10 text-picto-primary rounded-full text-sm font-medium"
+                className="px-3.5 py-1 bg-picto-primary/10 text-picto-primary rounded-full text-xs font-semibold uppercase tracking-wider"
               >
                 {skill}
               </span>

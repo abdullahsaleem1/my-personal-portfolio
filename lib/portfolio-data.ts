@@ -38,7 +38,7 @@ export const heroData = {
   name: 'Abdullah Saleem',
   role: 'Software Engineer',
   summary:
-    'Proficient in Python, PHP, Java, JavaScript, and C++. Expert in developing CRUD applications and complex AI-integrated automation systems. Experienced in full-cycle data pipelines & collaborating with US-based clients.',
+    'I build automation systems that process 100K+ data points and full-stack apps with real-time capabilities. Currently shipping my FYP — an AI-powered vehicle surveillance platform with ~85% ANPR accuracy.',
   primaryCta: { label: 'View Projects', href: '/#projects' },
   secondaryCta: { label: 'Download CV', href: '/resume/Abdullah_Saleem_CV.pdf' },
 };
@@ -53,11 +53,11 @@ export const aboutData = {
   profileImage: '/profile-placeholder.svg',
   resumeUrl: '/resume/Abdullah_Saleem_CV.pdf',
   highlights: [
-    { label: 'CGPA', value: '3.00' },
+    { label: 'Internship', value: 'BitBash' },
     { label: 'Projects', value: '4+' },
   ],
   facts: [
-    { label: 'Location', value: 'Mughalpura, Lahore, Pakistan' },
+    { label: 'Location', value: 'Lahore, Pakistan' },
     { label: 'Degree', value: 'BSc Software Engineering' },
     { label: 'University', value: 'University of Lahore' },
     { label: 'Email', value: 'iamabdullahsaleem1@gmail.com' },
@@ -79,42 +79,27 @@ export const aboutData = {
 
 export const skillsData = {
   title: 'Skills & Technologies',
-  legend: [
-    { label: 'Confident', color: 'blue' },
-    { label: 'Learning', color: 'orange' },
-  ],
-  skills: [
-    // Programming Languages
-    { name: 'Python', category: 'Languages', level: 88, status: 'confident' },
-    { name: 'JavaScript', category: 'Languages', level: 85, status: 'confident' },
-    { name: 'PHP', category: 'Languages', level: 82, status: 'confident' },
-    { name: 'Java', category: 'Languages', level: 78, status: 'confident' },
-    { name: 'C / C++', category: 'Languages', level: 75, status: 'confident' },
-    { name: 'HTML5 / CSS3', category: 'Languages', level: 88, status: 'confident' },
-    // Frameworks & Libraries
-    { name: 'Laravel', category: 'Frameworks', level: 84, status: 'confident' },
-    { name: 'Flask', category: 'Frameworks', level: 80, status: 'confident' },
-    { name: 'Bootstrap', category: 'Frameworks', level: 82, status: 'confident' },
-    { name: 'Tailwind CSS', category: 'Frameworks', level: 84, status: 'confident' },
-    { name: 'React.js', category: 'Frameworks', level: 80, status: 'confident' },
-    { name: 'Node.js', category: 'Frameworks', level: 78, status: 'confident' },
-    { name: 'Express.js', category: 'Frameworks', level: 78, status: 'confident' },
-    { name: 'Selenium', category: 'Frameworks', level: 82, status: 'confident' },
-    { name: 'GraphQL', category: 'Frameworks', level: 76, status: 'confident' },
-    { name: 'REST API', category: 'Frameworks', level: 86, status: 'confident' },
-    // Databases
-    { name: 'MySQL', category: 'Databases', level: 82, status: 'confident' },
-    { name: 'SQLite', category: 'Databases', level: 80, status: 'confident' },
-    { name: 'MongoDB', category: 'Databases', level: 75, status: 'learning' },
-    // Tools & Technologies
-    { name: 'Git / GitHub', category: 'Tools', level: 84, status: 'confident' },
-    { name: 'VS Code', category: 'Tools', level: 90, status: 'confident' },
-    { name: 'Postman', category: 'Tools', level: 80, status: 'confident' },
-    { name: 'Figma', category: 'Tools', level: 70, status: 'learning' },
-    { name: 'Discord API', category: 'Tools', level: 78, status: 'confident' },
-    // AI/ML
-    { name: 'OpenCV', category: 'AI / ML', level: 75, status: 'confident' },
-    { name: 'TensorFlow', category: 'AI / ML', level: 70, status: 'learning' },
+  categories: [
+    {
+      name: 'Languages',
+      skills: ['Python', 'JavaScript', 'PHP', 'Java', 'C / C++', 'HTML5 / CSS3'],
+    },
+    {
+      name: 'Frameworks',
+      skills: ['Laravel', 'Flask', 'React.js', 'Node.js', 'Express.js', 'Tailwind CSS', 'Bootstrap'],
+    },
+    {
+      name: 'Databases',
+      skills: ['MySQL', 'SQLite', 'MongoDB'],
+    },
+    {
+      name: 'AI / ML',
+      skills: ['OpenCV', 'TensorFlow'],
+    },
+    {
+      name: 'Tools & APIs',
+      skills: ['Git / GitHub', 'Postman', 'REST API', 'GraphQL', 'Selenium', 'Discord API'],
+    },
   ],
 };
 
@@ -170,6 +155,7 @@ export const projectsData = [
     status: 'FYP – In Progress',
     stack: ['React.js', 'React Native', 'Node.js', 'MongoDB', 'OpenCV', 'TensorFlow', 'Python'],
     image: '/projects/vehicle-identification.svg',
+    slug: 'smart-vehicle-identification',
     githubUrl: '',
     liveUrl: '',
   },
@@ -180,6 +166,7 @@ export const projectsData = [
     status: 'Completed',
     stack: ['Python', 'discord.py', 'Selenium', 'GraphQL', 'SQLite', 'Socket.io'],
     image: '/projects/placeholder.svg',
+    slug: 'upwork-discord-job-bot',
     githubUrl: '',
     liveUrl: '',
   },
@@ -190,6 +177,7 @@ export const projectsData = [
     status: 'Completed',
     stack: ['Python', 'Flask', 'JWT Auth', 'SQLAlchemy', 'SQL'],
     image: '/projects/placeholder.svg',
+    slug: 'online-book-store',
     githubUrl: '',
     liveUrl: '',
   },
@@ -200,6 +188,7 @@ export const projectsData = [
     status: 'Completed',
     stack: ['Laravel 12', 'PHP 8.2', 'MySQL', 'Eloquent ORM', 'Bootstrap', 'JavaScript'],
     image: '/projects/property-management.svg',
+    slug: 'property-management-system',
     githubUrl: '',
     liveUrl: '',
   },
@@ -211,7 +200,7 @@ export const contactData = {
     "Have an opportunity, a question, or just want to chat? I'd love to hear from you.",
   email: 'iamabdullahsaleem1@gmail.com',
   phone: '+92 325 9733970',
-  location: 'Mughalpura, Lahore, Punjab, 54840, Pakistan',
+  location: 'Lahore, Pakistan',
   portfolio: 'abdullahsaleem.vercel.app',
   subjects: ['Job Opportunity', 'Freelance', 'Collaboration', 'Other'],
 };

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { projectsData } from '@/lib/portfolio-data';
+import Link from 'next/link';
 
 export default function Projects() {
   return (
@@ -51,11 +52,18 @@ export default function Projects() {
                 <p className="text-gray-900 text-lg font-semibold pt-1 mb-3">
                   {project.title}
                 </p>
-                <p className="text-gray-600 text-sm leading-5">
+                <p className="text-gray-600 text-sm leading-relaxed text-justify">
                   {project.description}
                 </p>
 
                 <div className="flex gap-3 mt-5 flex-wrap">
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="inline-flex items-center gap-2 px-6 py-3 border border-gray-200 rounded-md hover:border-picto-primary hover:text-picto-primary bg-white text-sm font-semibold transition-all duration-300 no-underline text-heading"
+                  >
+                    View Details
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
@@ -77,11 +85,6 @@ export default function Projects() {
                       Code
                       <ArrowRight className="w-4 h-4" />
                     </a>
-                  )}
-                  {!project.liveUrl && !project.githubUrl && (
-                    <span className="inline-flex items-center gap-2 px-6 py-3 border border-gray-200 rounded-md bg-white text-sm font-semibold text-gray-400">
-                      Coming Soon
-                    </span>
                   )}
                 </div>
               </div>

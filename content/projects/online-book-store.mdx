@@ -1,0 +1,94 @@
+---
+title: Online Book Store E-Commerce Platform
+tagline: Full-stack e-commerce with normalized relational schema and JWT-secured RBAC
+description: Designed and built a complete e-commerce platform with a 9-entity relational database, full order lifecycle, and role-based access control.
+stack: [Python, Flask, JWT Auth, SQLAlchemy, SQL]
+tags: [Python, Full-stack, Database Design]
+status: archived
+featured: false
+github: https://github.com/abdullahsaleem1
+date: 2024-12-10
+---
+
+## The Problem
+
+Building a real e-commerce system from scratch requires solving complex database design problems: normalized schemas, relational integrity across orders, reviews, and inventory, and secure role-based access for different user types.
+
+## My Role
+
+I handled the full stack — database architecture, backend API, authentication system, and frontend templates:
+- Designed a normalized 9-entity relational schema
+- Implemented JWT-secured authentication with role-based access
+- Built the complete order lifecycle (cart → checkout → review)
+- Optimized query patterns for performance
+
+## Technical Decisions
+
+### Why SQLAlchemy + Flask?
+
+- **SQLAlchemy ORM** for clean, Pythonic database interactions
+- **Flask** for lightweight, flexible routing
+- **JWT** for stateless authentication (no server-side sessions)
+
+### Database Schema
+
+```
+Entities:
+├── User          (id, name, email, role, password_hash)
+├── Book          (id, title, author, price, stock, category_id)
+├── Category      (id, name, description)
+├── Cart          (id, user_id, created_at)
+├── CartItem      (id, cart_id, book_id, quantity)
+├── Order         (id, user_id, total, status, created_at)
+├── OrderItem     (id, order_id, book_id, quantity, price)
+├── Review        (id, user_id, book_id, rating, comment)
+└── Payment       (id, order_id, method, status, timestamp)
+```
+
+## Hardest Challenge
+
+**Challenge**: Maintaining data consistency across cart, order, and inventory during concurrent checkouts.
+
+**Solution**:
+I used SQLAlchemy sessions with explicit locking on stock fields and transactional order creation to prevent overselling:
+
+```python
+from sqlalchemy.orm import Session
+from sqlalchemy import select, update
+
+def checkout(cart_id: int, db: Session):
+    cart_items = db.execute(
+        select(CartItem).where(CartItem.cart_id == cart_id)
+    ).scalars().all()
+
+    # Atomic stock check and reservation
+    for item in cart_items:
+        result = db.execute(
+            update(Book)
+            .where(Book.id == item.book_id, Book.stock >= item.quantity)
+            .values(stock=Book.stock - item.quantity)
+        )
+        if result.rowcount == 0:
+            db.rollback()
+            raise ValueError(f"Insufficient stock for {item.book.name}")
+
+    # Create order
+    order = Order(user_id=cart.user_id, total=calculate_total(cart_items))
+    db.add(order)
+    db.commit()
+    return order
+```
+
+## Results
+
+- **9 normalized entities** with proper foreign keys and indexes
+- **Sub-200ms** average query response time
+- **JWT-secured** role-based access (Admin, Customer)
+- **Complete order lifecycle**: browse → cart → checkout → review
+
+## What I Learned
+
+1. **Database normalization** is not just academic — it directly impacts data integrity
+2. **Concurrency handling** in e-commerce is a real engineering challenge
+3. **JWT trade-offs**: simplicity vs. token revocation complexity
+4. **SQLAlchemy sessions** need careful management to avoid stale data

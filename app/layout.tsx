@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Monitoring from '@/components/effects/Monitoring';
 
 export const metadata: Metadata = {
   title: {
@@ -61,7 +60,6 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        <Monitoring />
       </body>
     </html>
   );

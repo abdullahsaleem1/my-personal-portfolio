@@ -1,17 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import ASLogo from '@/components/common/ASLogo';
-
-const navItems = [
-  { id: 1, name: 'Home', href: '#home' },
-  { id: 2, name: 'About', href: '#about' },
-  { id: 3, name: 'Projects', href: '#projects' },
-  { id: 4, name: 'Skills', href: '#skills' },
-  { id: 5, name: 'Experience', href: '#experience' },
-];
+import { navLinks } from '@/lib/portfolio-data';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -45,31 +37,31 @@ export default function Navbar() {
           </div>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center border-0 lg:ps-5">
+          <a href="/#home" className="flex items-center border-0 lg:ps-5 no-underline">
             <ASLogo className="h-8 w-8 sm:h-10 sm:w-10" />
             <p className="text-2xl sm:text-[32px] my-auto ms-[12px] font-semibold text-heading">
               Abdullah
             </p>
-          </Link>
+          </a>
         </div>
 
         <div className="lg:flex items-center">
           {/* Desktop Nav */}
           <ul className="hidden lg:flex text-[16px] font-medium shrink-0 list-none m-0">
-            {navItems.map((item) => (
-              <li key={item.id}>
+            {navLinks.map((link) => (
+              <li key={link.href}>
                 <a
-                  href={item.href}
+                  href={link.href}
                   className="hover:text-picto-primary hover:bg-picto-primary/10 px-5 py-3 mx-1 rounded-md text-heading no-underline"
                 >
-                  {item.name}
+                  {link.label}
                 </a>
               </li>
             ))}
           </ul>
           <a
             className="btn-primary-picto px-4 sm:px-8 py-2 sm:py-3 rounded-md font-semibold text-sm sm:text-base"
-            href="#contact"
+            href="/#contact"
           >
             Contact
           </a>
@@ -80,14 +72,14 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-gray-200 py-4 px-6 animate-fade-in">
           <div className="flex flex-col gap-2">
-            {navItems.map((item) => (
+            {navLinks.map((link) => (
               <a
-                key={item.id}
-                href={item.href}
+                key={link.href}
+                href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-4 py-3 text-heading hover:text-picto-primary hover:bg-picto-primary/5 rounded-md font-medium no-underline"
               >
-                {item.name}
+                {link.label}
               </a>
             ))}
           </div>
