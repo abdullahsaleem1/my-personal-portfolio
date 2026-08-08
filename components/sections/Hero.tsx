@@ -14,14 +14,14 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 
 const informationSummaryData = [
   { id: 1, title: 'Internship', description: 'BitBash' },
-  { id: 2, title: 'Projects Completed', description: '4+' },
+  { id: 2, title: 'Projects Completed', description: '6+' },
   { id: 3, title: 'Technologies', description: '15+' },
 ];
 
 export default function Hero() {
   return (
     <div
-      className="flex flex-col lg:flex-row items-center justify-center pt-10 lg:pt-20 lg:mb-20 gap-12 lg:gap-16 px-8 sm:px-16 md:px-24 lg:px-36"
+      className="flex flex-col lg:flex-row items-center justify-center pt-14 lg:pt-24 pb-4 lg:mb-20 gap-12 lg:gap-16 px-8 sm:px-16 md:px-24 lg:px-36"
       id="home"
     >
       {/* Left side - Profile image */}

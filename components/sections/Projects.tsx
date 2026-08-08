@@ -12,7 +12,7 @@ export default function Projects() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="content mt-10 md:mt-15 xl:mt-25 mb-10 md:mb-25 max-2xl:p-2"
+      className="content px-4 sm:px-6 mt-10 md:mt-16 xl:mt-24 mb-10 md:mb-24"
       id="projects"
     >
       <div className="xl:mb-18 mb-5">
@@ -25,7 +25,7 @@ export default function Projects() {
         </div>
       </div>
       <div className="mx-auto flex justify-center">
-        <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-6">
+        <div className="grid w-full grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {projectsData.map((project, index) => (
             <motion.div
               key={project.title}
@@ -33,7 +33,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="max-w-[424px] rounded-lg hover:shadow-2xl duration-300 transition-all shadow-gray-300 border border-gray-200 overflow-hidden"
+              className="w-full rounded-lg hover:shadow-2xl duration-300 transition-all shadow-gray-300 border border-gray-200 overflow-hidden"
             >
               {/* Project image/visual */}
               <div className="h-48 bg-gradient-to-br from-picto-primary/10 via-soft-white to-picto-primary-light/30 flex items-center justify-center">

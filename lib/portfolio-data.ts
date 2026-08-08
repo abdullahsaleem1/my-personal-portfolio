@@ -54,7 +54,7 @@ export const aboutData = {
   resumeUrl: '/resume/Abdullah_Saleem_CV.pdf',
   highlights: [
     { label: 'Internship', value: 'BitBash' },
-    { label: 'Projects', value: '4+' },
+    { label: 'Projects', value: '6+' },
   ],
   facts: [
     { label: 'Location', value: 'Lahore, Pakistan' },
@@ -151,23 +151,45 @@ export const projectsData = [
   {
     title: 'Intelligent Vehicle Verification & Surveillance Platform',
     description:
-      'AI-powered platform achieving ~85% ANPR accuracy and 60+ FPS throughput. Features web dashboard (React.js), mobile app (React Native), Node.js/Express backend, and MongoDB database with real-time Socket.io alerts.',
+      'AI-powered FYP achieving ~85% ANPR accuracy and 60+ FPS throughput. Features web dashboard (React.js), mobile app (React Native), Node.js/Express backend, and MongoDB database with real-time Socket.io alerts.',
     status: 'FYP – In Progress',
     stack: ['React.js', 'React Native', 'Node.js', 'MongoDB', 'OpenCV', 'TensorFlow', 'Python'],
     image: '/projects/vehicle-identification.svg',
     slug: 'smart-vehicle-identification',
-    githubUrl: '',
+    githubUrl: 'https://github.com/abdullahsaleem1/IVVSP',
     liveUrl: '',
   },
   {
     title: 'Upwork Discord Job Bot',
     description:
-      'Reverse-engineered Upwork\'s private GraphQL API to build a Discord bot monitoring multiple job categories with <5s latency and zero duplicates via SQLite deduplication. Features hybrid architecture with 100+ hour stability.',
+      'Reverse-engineered Upwork\'s private GraphQL API to build a Discord bot monitoring multiple job categories with sub-5s latency and zero duplicates via SQLite deduplication. Features hybrid architecture with 100+ hour stability.',
     status: 'Completed',
     stack: ['Python', 'discord.py', 'Selenium', 'GraphQL', 'SQLite', 'Socket.io'],
     image: '/projects/placeholder.svg',
     slug: 'upwork-discord-job-bot',
-    githubUrl: '',
+    githubUrl: 'https://github.com/abdullahsaleem1/upwork-discord-bot',
+    liveUrl: '',
+  },
+  {
+    title: 'Distributed Inventory & Order Management System',
+    description:
+      'Production-grade FastAPI backend with Domain-Driven Design, a from-scratch OAuth2.0/JWT authorization server, event-driven order processing, CQRS, Redis rate limiting, and distributed tracing — containerized with Docker Compose.',
+    status: 'In Progress',
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'SQLAlchemy', 'OAuth2.0', 'JWT', 'Docker'],
+    image: '/projects/placeholder.svg',
+    slug: 'inventory-order-system',
+    githubUrl: 'https://github.com/abdullahsaleem1/inventory-order-system',
+    liveUrl: '',
+  },
+  {
+    title: 'TailorConnect — Tailor & Designer Marketplace',
+    description:
+      'Mobile marketplace connecting customers with local tailors and designers. React Native (Expo) frontend with real-time chat and home visit bookings, powered by a Node.js/Express + MongoDB backend with Socket.io and JWT auth.',
+    status: 'In Progress',
+    stack: ['React Native', 'Expo', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'JWT'],
+    image: '/projects/placeholder.svg',
+    slug: 'tailor-connect-system',
+    githubUrl: 'https://github.com/abdullahsaleem1/tailor-connect-system',
     liveUrl: '',
   },
   {
@@ -178,8 +200,8 @@ export const projectsData = [
     stack: ['Python', 'Flask', 'JWT Auth', 'SQLAlchemy', 'SQL'],
     image: '/projects/placeholder.svg',
     slug: 'online-book-store',
-    githubUrl: '',
-    liveUrl: '',
+    githubUrl: 'https://github.com/abdullahsaleem1/FlaskAPI-Ecommerce-BookStore',
+    liveUrl: 'https://flask-api-ecommerce-book-store.vercel.app',
   },
   {
     title: 'Property Management System',

@@ -52,19 +52,14 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="hover:text-picto-primary hover:bg-picto-primary/10 px-5 py-3 mx-1 rounded-md text-heading no-underline"
+                  className="group relative inline-block px-4 py-2 mx-0.5 rounded-md text-heading no-underline transition-colors duration-300 hover:text-picto-primary"
                 >
                   {link.label}
+                  <span className="absolute left-4 right-4 -bottom-0.5 h-0.5 bg-picto-primary rounded-full origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
                 </a>
               </li>
             ))}
           </ul>
-          <a
-            className="btn-primary-picto px-4 sm:px-8 py-2 sm:py-3 rounded-md font-semibold text-sm sm:text-base"
-            href="/#contact"
-          >
-            Contact
-          </a>
         </div>
       </div>
 

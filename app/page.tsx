@@ -16,7 +16,7 @@ export default function Home() {
       <Navbar />
       <main>
         <div className="introduction-profile-background">
-          <div className="content">
+          <div className="content pb-20 lg:pb-28">
             <Hero />
             <Profile />
           </div>

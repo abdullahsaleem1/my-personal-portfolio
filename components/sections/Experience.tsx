@@ -16,7 +16,7 @@ export default function Experience() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="content py-10 md:py-25 px-2 max-2xl:px-4"
+      className="content py-10 md:py-25 px-4 sm:px-6"
       id="experience"
     >
       <p className="section-title text-center mb-12">Experience</p>
