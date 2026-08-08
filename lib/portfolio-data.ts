@@ -1,11 +1,11 @@
 // Centralized content for the portfolio sections.
 export const navLinks = [
   { label: 'Home', href: '/#home' },
-  { label: 'Projects', href: '/#projects' },
   { label: 'About', href: '/#about' },
+  { label: 'Resume', href: '/#experience' },
+  { label: 'Services', href: '/#work-process' },
   { label: 'Skills', href: '/#skills' },
-  { label: 'Experience', href: '/#experience' },
-  { label: 'Education', href: '/#education' },
+  { label: 'Projects', href: '/#projects' },
   { label: 'Contact', href: '/#contact' },
 ];
 
@@ -82,22 +82,27 @@ export const skillsData = {
   categories: [
     {
       name: 'Languages',
+      proficiency: 90,
       skills: ['Python', 'JavaScript', 'PHP', 'Java', 'C / C++', 'HTML5 / CSS3'],
     },
     {
       name: 'Frameworks',
+      proficiency: 88,
       skills: ['Laravel', 'Flask', 'React.js', 'Node.js', 'Express.js', 'Tailwind CSS', 'Bootstrap'],
     },
     {
       name: 'Databases',
+      proficiency: 80,
       skills: ['MySQL', 'SQLite', 'MongoDB'],
     },
     {
       name: 'AI / ML',
+      proficiency: 75,
       skills: ['OpenCV', 'TensorFlow'],
     },
     {
       name: 'Tools & APIs',
+      proficiency: 85,
       skills: ['Git / GitHub', 'Postman', 'REST API', 'GraphQL', 'Selenium', 'Discord API'],
     },
   ],
@@ -165,7 +170,7 @@ export const projectsData = [
       'Reverse-engineered Upwork\'s private GraphQL API to build a Discord bot monitoring multiple job categories with sub-5s latency and zero duplicates via SQLite deduplication. Features hybrid architecture with 100+ hour stability.',
     status: 'Completed',
     stack: ['Python', 'discord.py', 'Selenium', 'GraphQL', 'SQLite', 'Socket.io'],
-    image: '/projects/placeholder.svg',
+    image: '/projects/upwork-discord-bot.svg',
     slug: 'upwork-discord-job-bot',
     githubUrl: 'https://github.com/abdullahsaleem1/upwork-discord-bot',
     liveUrl: '',
@@ -176,7 +181,7 @@ export const projectsData = [
       'Production-grade FastAPI backend with Domain-Driven Design, a from-scratch OAuth2.0/JWT authorization server, event-driven order processing, CQRS, Redis rate limiting, and distributed tracing — containerized with Docker Compose.',
     status: 'In Progress',
     stack: ['Python', 'FastAPI', 'PostgreSQL', 'SQLAlchemy', 'OAuth2.0', 'JWT', 'Docker'],
-    image: '/projects/placeholder.svg',
+    image: '/projects/inventory-order-system.svg',
     slug: 'inventory-order-system',
     githubUrl: 'https://github.com/abdullahsaleem1/inventory-order-system',
     liveUrl: '',
@@ -187,7 +192,7 @@ export const projectsData = [
       'Mobile marketplace connecting customers with local tailors and designers. React Native (Expo) frontend with real-time chat and home visit bookings, powered by a Node.js/Express + MongoDB backend with Socket.io and JWT auth.',
     status: 'In Progress',
     stack: ['React Native', 'Expo', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'JWT'],
-    image: '/projects/placeholder.svg',
+    image: '/projects/tailor-connect-system.svg',
     slug: 'tailor-connect-system',
     githubUrl: 'https://github.com/abdullahsaleem1/tailor-connect-system',
     liveUrl: '',
@@ -198,7 +203,7 @@ export const projectsData = [
       'Designed a normalized 9-entity relational schema (SQLAlchemy + Flask) with full order lifecycle — cart, checkout, review — with JWT-secured role-based access control and optimized query patterns.',
     status: 'Completed',
     stack: ['Python', 'Flask', 'JWT Auth', 'SQLAlchemy', 'SQL'],
-    image: '/projects/placeholder.svg',
+    image: '/projects/online-book-store.svg',
     slug: 'online-book-store',
     githubUrl: 'https://github.com/abdullahsaleem1/FlaskAPI-Ecommerce-BookStore',
     liveUrl: 'https://flask-api-ecommerce-book-store.vercel.app',

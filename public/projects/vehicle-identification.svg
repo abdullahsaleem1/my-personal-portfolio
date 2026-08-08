@@ -1,22 +1,72 @@
-<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Smart Vehicle Identification preview">
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Intelligent Vehicle Verification &amp; Surveillance">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0b0f14" />
-      <stop offset="100%" stop-color="#111827" />
+      <stop offset="0%" stop-color="#141414" />
+      <stop offset="100%" stop-color="#222222" />
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#3b82f6" />
-      <stop offset="100%" stop-color="#00ff88" />
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffbd39" />
+      <stop offset="100%" stop-color="#ffd97a" />
     </linearGradient>
   </defs>
+
   <rect width="1200" height="675" fill="url(#bg)" />
-  <rect x="90" y="100" width="1020" height="475" rx="28" fill="#0f172a" stroke="#1f2937" stroke-width="2" />
-  <rect x="140" y="160" width="600" height="260" rx="18" fill="#111827" stroke="#1f2937" stroke-width="2" />
-  <rect x="780" y="160" width="250" height="20" rx="10" fill="url(#accent)" />
-  <rect x="780" y="200" width="210" height="14" rx="7" fill="#334155" />
-  <rect x="780" y="230" width="190" height="14" rx="7" fill="#334155" />
-  <rect x="780" y="260" width="160" height="14" rx="7" fill="#334155" />
-  <rect x="200" y="260" width="300" height="140" rx="14" fill="#0b1220" stroke="#1f2937" stroke-width="2" />
-  <rect x="240" y="290" width="220" height="80" rx="10" fill="url(#accent)" opacity="0.25" />
-  <text x="120" y="600" fill="#94a3b8" font-family="monospace" font-size="28" letter-spacing="1">Smart Vehicle Identification</text>
+
+  <!-- faint grid -->
+  <g stroke="#2a2a2a" stroke-width="1" opacity="0.5">
+    <line x1="0" y1="150" x2="1200" y2="150" />
+    <line x1="0" y1="300" x2="1200" y2="300" />
+    <line x1="0" y1="450" x2="1200" y2="450" />
+  </g>
+
+  <!-- road -->
+  <rect x="0" y="480" width="1200" height="195" fill="#0e0e0e" />
+  <line x1="0" y1="540" x2="1200" y2="540" stroke="#333333" stroke-width="5" stroke-dasharray="60 40" />
+
+  <!-- ANPR scanning frame -->
+  <rect x="210" y="150" width="460" height="240" fill="none" stroke="#ffbd39" stroke-width="6" opacity="0.9" rx="6" />
+  <line x1="210" y1="390" x2="670" y2="390" stroke="#ffbd39" stroke-width="3" opacity="0.45" />
+  <line x1="210" y1="365" x2="670" y2="365" stroke="#ffbd39" stroke-width="3" opacity="0.25" />
+  <!-- corners -->
+  <g stroke="#ffbd39" stroke-width="6">
+    <path d="M210 150 L210 180" />
+    <path d="M210 150 L240 150" />
+    <path d="M670 150 L670 180" />
+    <path d="M670 150 L640 150" />
+    <path d="M210 390 L210 360" />
+    <path d="M210 390 L240 390" />
+    <path d="M670 390 L670 360" />
+    <path d="M670 390 L640 390" />
+  </g>
+
+  <!-- car body -->
+  <path d="M 300 452 L 288 415 Q 284 392 308 386 L 470 374 Q 540 370 566 396 L 612 396 Q 660 396 668 420 L 676 446 Q 680 460 664 460 L 316 460 Q 296 460 300 452 Z" fill="#1b1b1b" stroke="#ffbd39" stroke-width="4" />
+  <!-- windows -->
+  <path d="M 330 394 Q 330 378 352 376 L 440 368 L 460 384 L 468 396 Z" fill="#ffbd39" opacity="0.85" />
+  <path d="M 480 388 L 500 372 L 560 376 Q 585 378 588 392 L 590 400 Z" fill="#ffbd39" opacity="0.85" />
+  <!-- wheels -->
+  <circle cx="400" cy="462" r="26" fill="#0a0a0a" stroke="#ffbd39" stroke-width="4" />
+  <circle cx="400" cy="462" r="8" fill="#ffbd39" />
+  <circle cx="596" cy="462" r="26" fill="#0a0a0a" stroke="#ffbd39" stroke-width="4" />
+  <circle cx="596" cy="462" r="8" fill="#ffbd39" />
+  <!-- license plate -->
+  <rect x="652" y="428" width="46" height="18" rx="2" fill="#fff" opacity="0.92" />
+  <text x="675" y="442" font-size="13" font-family="monospace" font-weight="700" fill="#111" text-anchor="middle">AS</text>
+
+  <!-- camera -->
+  <g transform="translate(880 190)">
+    <rect x="0" y="30" width="70" height="46" rx="8" fill="#2b2b2b" stroke="#ffbd39" stroke-width="3" />
+    <rect x="18" y="42" width="34" height="22" rx="3" fill="#ffbd39" />
+    <path d="M 30 30 L 30 12 L 52 18 L 40 30 Z" fill="#ffbd39" />
+    <rect x="8" y="18" width="16" height="8" rx="2" fill="#ffbd39" opacity="0.7" />
+    <!-- tripod -->
+    <path d="M 35 76 L 22 120 M 35 76 L 48 120 M 35 76 L 35 120" stroke="#444" stroke-width="5" stroke-linecap="round" />
+    <!-- beam -->
+    <line x1="12" y1="52" x2="210" y2="240" stroke="#ffbd39" stroke-width="2" opacity="0.25" stroke-dasharray="10 8" />
+  </g>
+
+  <!-- accuracy readout -->
+  <rect x="880" y="330" width="200" height="72" rx="10" fill="#161616" stroke="#ffbd39" stroke-width="2" />
+  <text x="980" y="360" font-size="30" font-family="monospace" font-weight="700" fill="#ffbd39" text-anchor="middle">85%</text>
+  <text x="980" y="388" font-size="15" font-family="monospace" fill="#888" text-anchor="middle">ANPR ACCURACY</text>
 </svg>

@@ -1,20 +1,75 @@
-<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Property Management System preview">
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Property Management System">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0f172a" />
-      <stop offset="100%" stop-color="#1f2937" />
+      <stop offset="0%" stop-color="#141414" />
+      <stop offset="100%" stop-color="#222222" />
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#00ff88" />
-      <stop offset="100%" stop-color="#3b82f6" />
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffbd39" />
+      <stop offset="100%" stop-color="#ffd97a" />
     </linearGradient>
   </defs>
+
   <rect width="1200" height="675" fill="url(#bg)" />
-  <rect x="80" y="80" width="1040" height="515" rx="24" fill="#0b1120" stroke="#1f2937" stroke-width="2" />
-  <rect x="120" y="130" width="420" height="22" rx="11" fill="url(#accent)" />
-  <rect x="120" y="180" width="300" height="16" rx="8" fill="#334155" />
-  <rect x="120" y="220" width="360" height="16" rx="8" fill="#334155" />
-  <rect x="120" y="260" width="260" height="16" rx="8" fill="#334155" />
-  <rect x="120" y="320" width="960" height="220" rx="16" fill="#111827" stroke="#1f2937" stroke-width="2" />
-  <text x="120" y="585" fill="#94a3b8" font-family="monospace" font-size="28" letter-spacing="1">Property Management System</text>
+
+  <!-- house -->
+  <g transform="translate(220 220)">
+    <!-- roof -->
+    <path d="M 80 0 L 0 80 L 160 80 Z" fill="#ffbd39" />
+    <path d="M 80 0 L 40 80 M 80 0 L 120 80" stroke="#1a1a1a" stroke-width="3" opacity="0.4" />
+    <!-- body -->
+    <rect x="24" y="80" width="112" height="110" fill="none" stroke="#ffbd39" stroke-width="5" />
+    <!-- door -->
+    <rect x="66" y="120" width="30" height="70" rx="2" fill="#ffbd39" />
+    <circle cx="90" cy="158" r="4" fill="#1a1a1a" />
+    <!-- windows -->
+    <rect x="40" y="100" width="20" height="20" fill="none" stroke="#ffbd39" stroke-width="4" />
+    <line x1="50" y1="100" x2="50" y2="120" stroke="#ffbd39" stroke-width="2" />
+    <rect x="100" y="100" width="20" height="20" fill="none" stroke="#ffbd39" stroke-width="4" />
+    <line x1="110" y1="100" x2="110" y2="120" stroke="#ffbd39" stroke-width="2" />
+  </g>
+
+  <!-- key -->
+  <g transform="translate(560 300)">
+    <circle cx="0" cy="0" r="24" fill="none" stroke="#ffbd39" stroke-width="6" />
+    <rect x="20" y="-6" width="70" height="12" rx="4" fill="#ffbd39" />
+    <rect x="70" y="-6" width="10" height="24" rx="3" fill="#ffbd39" />
+    <rect x="88" y="-6" width="10" height="18" rx="3" fill="#ffbd39" />
+    <rect x="106" y="-6" width="10" height="12" rx="3" fill="#ffbd39" opacity="0.8" />
+  </g>
+
+  <!-- building with windows -->
+  <g transform="translate(800 200)">
+    <rect x="0" y="40" width="200" height="170" fill="none" stroke="#ffbd39" stroke-width="5" />
+    <rect x="20" y="0" width="160" height="40" fill="none" stroke="#ffbd39" stroke-width="5" />
+    <g fill="#ffbd39">
+      <rect x="24" y="60" width="28" height="28" />
+      <rect x="86" y="60" width="28" height="28" />
+      <rect x="148" y="60" width="28" height="28" />
+      <rect x="24" y="120" width="28" height="28" />
+      <rect x="86" y="120" width="28" height="28" />
+      <rect x="148" y="120" width="28" height="28" />
+    </g>
+  </g>
+
+  <!-- role badges: Admin / Agent / Client -->
+  <g transform="translate(300 520)">
+    <rect x="0" y="0" width="150" height="42" rx="21" fill="#2a2416" stroke="#ffbd39" stroke-width="2" />
+    <text x="75" y="27" font-size="16" font-family="sans-serif" font-weight="600" fill="#ffbd39" text-anchor="middle">ADMIN</text>
+  </g>
+  <g transform="translate(510 560)">
+    <rect x="0" y="0" width="150" height="42" rx="21" fill="#1f2833" stroke="#2e3b4e" stroke-width="2" />
+    <text x="75" y="27" font-size="16" font-family="sans-serif" font-weight="600" fill="#d3d3d3" text-anchor="middle">AGENT</text>
+  </g>
+  <g transform="translate(720 520)">
+    <rect x="0" y="0" width="150" height="42" rx="21" fill="#1f2833" stroke="#2e3b4e" stroke-width="2" />
+    <text x="75" y="27" font-size="16" font-family="sans-serif" font-weight="600" fill="#d3d3d3" text-anchor="middle">CLIENT</text>
+  </g>
+
+  <!-- search -->
+  <g transform="translate(940 560)">
+    <circle cx="20" cy="20" r="16" fill="none" stroke="#ffbd39" stroke-width="5" />
+    <line x1="32" y1="32" x2="52" y2="52" stroke="#ffbd39" stroke-width="6" stroke-linecap="round" />
+    <text x="76" y="36" font-size="16" font-family="sans-serif" fill="#888">Search &amp; filter</text>
+  </g>
 </svg>

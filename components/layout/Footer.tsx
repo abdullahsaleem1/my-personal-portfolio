@@ -1,37 +1,67 @@
-import ASLogo from '@/components/common/ASLogo';
-import { navLinks } from '@/lib/portfolio-data';
+import Link from 'next/link';
+import { navLinks, socialLinks } from '@/lib/portfolio-data';
+import { FaGithub, FaLinkedin, FaGlobe, FaEnvelope } from 'react-icons/fa';
 
 const copyrightYear = new Date().getFullYear();
 
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  github: FaGithub,
+  linkedin: FaLinkedin,
+  gmail: FaEnvelope,
+  globe: FaGlobe,
+};
+
 export default function Footer() {
   return (
-    <div className="pt-25 md:pt-40 content max-2xl:px-3">
-      <div className="flex max-md:flex-col justify-between mx-0 items-center h-full w-full text-neutral-200">
-        <a href="/#home" className="flex items-center border-0 no-underline">
-          <ASLogo className="h-10 w-10 sm:h-12 sm:w-12" />
-          <p className="text-3xl sm:text-[32px] my-auto ms-[12px] font-semibold text-neutral-200">
-            Abdullah
+    <footer style={{ background: '#000000' }}>
+      <div className="content px-4 sm:px-6 py-16 md:py-20">
+        <div className="flex flex-col items-center text-center">
+          <Link
+            href="/#home"
+            className="font-semibold text-2xl sm:text-3xl tracking-tight no-underline text-white"
+          >
+            Abdullah <span className="text-clark-gold">Saleem</span>
+          </Link>
+
+          <div className="mt-8 flex gap-4">
+            {socialLinks.map((link) => {
+              const Icon = iconMap[link.icon];
+              if (!Icon) return null;
+              return (
+                <a
+                  key={link.key}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full bg-white/10 text-white hover:bg-clark-gold hover:text-black no-underline flex items-center justify-center transition-all duration-300"
+                  aria-label={link.label}
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              );
+            })}
+          </div>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                className="inline-block relative text-sm text-neutral-400 hover:text-white no-underline"
+                href={link.href}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <p className="text-sm text-neutral-500 mt-8">
+            Copyright &copy; {copyrightYear} Abdullah Saleem. All rights reserved.
           </p>
-        </a>
-        <div className="mx-7 max-md:my-7 text-center">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              className="mx-2 group inline-block relative w-fit text-xs sm:text-base text-neutral-200 no-underline"
-              href={link.href}
-            >
-              {link.label}
-              <span className="absolute left-0 bottom-0 h-0.5 w-full bg-white scale-x-0 duration-300 group-hover:scale-x-100" />
-            </a>
-          ))}
+          <p className="text-xs text-neutral-600 mt-2">
+            Built with Next.js &amp; Tailwind CSS
+          </p>
         </div>
-        <p className="text-xs sm:text-base text-neutral-200">
-          Copyright &copy; {copyrightYear} Abdullah Saleem.
-        </p>
       </div>
-      <p className="text-white text-center text-xs md:text-sm w-full py-10">
-        Built with Next.js &amp; Tailwind CSS
-      </p>
-    </div>
+    </footer>
   );
 }
