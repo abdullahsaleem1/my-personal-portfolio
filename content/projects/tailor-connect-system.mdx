@@ -1,0 +1,71 @@
+---
+title: TailorConnect — Tailor & Designer Marketplace
+tagline: Mobile marketplace connecting customers with local tailors and designers
+description: Built a full-stack mobile marketplace where customers browse tailor portfolios, place orders, chat in real-time, and book home visits. React Native (Expo) frontend with a Node.js/Express + MongoDB backend using Socket.io and JWT auth.
+stack: [React Native, Expo, Node.js, Express, MongoDB, Socket.io, JWT]
+tags: [React Native, Full-stack, Marketplace]
+status: in-progress
+featured: false
+github: https://github.com/abdullahsaleem1/tailor-connect-system
+date: 2026-08-04
+---
+
+## The Problem
+
+Local tailors and designers have no easy way to reach customers digitally. Customers can't browse portfolios, place orders, or book home visits without phone calls and visits. The market needed a mobile-first bridge between them.
+
+## My Role
+
+I built the application end-to-end as a monorepo:
+- **Frontend**: Expo React Native app with Expo Router, Gluestack UI, Zustand, and React Query
+- **Backend**: Node.js/Express API with MongoDB (Mongoose), Socket.io, JWT auth, and Multer uploads
+- **Real-time**: chat between customers and tailors plus live booking updates
+
+## Technical Decisions
+
+### Why React Native with Expo?
+
+Expo provides fast iteration and a single codebase for both platforms, with Expo Router giving file-based navigation. Gluestack UI keeps components consistent while Zustand handles lightweight client state and React Query manages server state and caching.
+
+### Why MongoDB?
+
+The marketplace has evolving, document-shaped data — portfolios, measurements, bookings — that maps naturally to a flexible document model, and scales well for a mobile-first API.
+
+### Real-Time with Socket.io
+
+Chat and booking updates need push-style delivery. Socket.io keeps clients in sync with order status and messaging without polling.
+
+## Architecture
+
+```
+TailorApp/
+├── frontend/          # Expo React Native app
+│   ├── app/           # Expo Router screens
+│   └── src/           # Components, state, API client
+├── backend/           # Node.js Express API
+│   ├── routes/        # Tailors, orders, chat, bookings
+│   ├── models/        # Mongoose schemas
+│   └── socket/        # Real-time event handling
+└── package.json       # Root workspace config
+```
+
+## Hardest Challenge
+
+**Challenge**: Keeping real-time communication reliable across flaky mobile networks while preserving order integrity.
+
+**Solution**:
+Socket.io rooms scoped per conversation, React Query caching and optimistic updates on the client, and JWT-secured socket connections so users only receive events for their own threads.
+
+## Results
+
+- **Cross-platform** mobile app (iOS + Android) from a single codebase
+- **Real-time chat** with JWT-secured Socket.io connections
+- **Full marketplace flow**: browse portfolios → place order → chat → home visit booking
+- **Monorepo** with shared workspace config and separate frontend/backend deployables
+
+## What I Learned
+
+1. **Mobile networking** needs optimistic UI and retries — users expect instant feedback
+2. **Socket.io room scoping** is essential for secure, targeted real-time delivery
+3. **Expo Router** + React Query make complex navigation and data flows manageable
+4. **Monorepos** keep shared types and configs in sync across app and API

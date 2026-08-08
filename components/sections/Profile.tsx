@@ -20,7 +20,7 @@ export default function Profile() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
       viewport={{ once: true }}
-      className="relative mx-4 2xl:mx-0.5 -bottom-20 lg:-bottom-28 z-10 rounded-2xl bg-white drop-shadow-2xl max-xl:mb-5 shadow-white xl:p-20 lg:p-16 md:p-12 sm:p-8 p-4 border border-gray-100"
+      className="relative mx-4 2xl:mx-0.5 -bottom-20 lg:-bottom-28 z-10 rounded-2xl bg-white drop-shadow-2xl shadow-white xl:p-20 lg:p-16 md:p-12 sm:p-8 p-4 border border-gray-100"
       id="about"
     >
       <div className="flex max-md:flex-col justify-between items-center gap-10">

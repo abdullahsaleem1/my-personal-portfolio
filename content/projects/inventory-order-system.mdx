@@ -1,0 +1,82 @@
+---
+title: Distributed Inventory & Order Management System
+tagline: Production-grade FastAPI backend with DDD, OAuth2.0, and event-driven order processing
+description: Built a production-grade backend for Parallax Labs implementing Domain-Driven Design, a from-scratch OAuth2.0/JWT authorization server, event-driven order processing, CQRS, Redis rate limiting, and distributed tracing — containerized with Docker Compose.
+stack: [Python, FastAPI, PostgreSQL, SQLAlchemy, OAuth2.0, JWT, Docker]
+tags: [Python, Backend, System Design]
+status: in-progress
+featured: false
+github: https://github.com/abdullahsaleem1/inventory-order-system
+date: 2026-07-26
+---
+
+## The Problem
+
+The internship required building a distributed inventory and order management system that could survive production realities: strict layered architecture, secure authentication, structured errors, and resilience under load — not just CRUD endpoints.
+
+## My Role
+
+I designed and implemented the entire backend system:
+- Domain-Driven Design with isolated bounded contexts (Inventory, Orders, Identity)
+- Strict layered request flow: Route → Controller → Service → Repository → Database
+- A from-scratch OAuth2.0-compatible authorization server (no Keycloak/Authlib)
+- Standardized error envelope across every endpoint
+- Docker Compose setup with PostgreSQL and pgAdmin
+
+## Technical Decisions
+
+### Why Domain-Driven Design?
+
+Splitting the system into bounded contexts with dedicated domain models keeps cross-cutting concerns (auth, inventory, orders) from leaking into each other. Cross-context communication goes through the event pipeline rather than direct imports.
+
+### From-Scratch OAuth2.0 Authorization Server
+
+No third-party auth libraries. I implemented the RFC 6749 Resource Owner Password Credentials grant directly:
+- **bcrypt** (cost 12) with per-password random salts embedded in the hash
+- **HS256 JWTs** with `sub`, `email`, `role`, `jti`, `iat`, `exp`, `iss`, `aud` claims — signature, expiry, issuer, and audience all validated on decode
+- **Strict secret validation** — the app refuses to boot with a `JWT_SECRET_KEY` shorter than 32 bytes
+- **Timing-safe login** — unknown email and wrong password return the identical 401
+
+### Standardized Errors
+
+Every error is serialized by global exception handlers into one JSON envelope:
+
+```json
+{
+  "error": {
+    "code": "invalid_grant",
+    "message": "Incorrect email or password",
+    "details": null
+  },
+  "status": 401,
+  "request_id": "73abb953-c56c-4fd7-880e-7b7bd53586e4",
+  "path": "/oauth/token",
+  "timestamp": "2026-08-07T18:19:33.192792+00:00"
+}
+```
+
+OAuth2.0 codes (`invalid_grant`, `unsupported_grant_type`, `token_expired`) are preserved in `error.code` so clients can react programmatically.
+
+## Hardest Challenge
+
+**Challenge**: Building a security-critical authorization server from scratch and getting the auth flow verifiable end-to-end.
+
+**Solution**:
+I kept the domain library-free behind protocols (`PasswordHasher`, `JwtTokenService`), added strict startup validation, and wrote 30 automated tests — integration tests run the real FastAPI app against in-memory SQLite, covering register/login/OAuth2 token/me plus expired and tampered tokens.
+
+## Results
+
+- **30+ automated tests** passing, including end-to-end auth flows
+- **From-scratch OAuth2.0** password grant + HS256 JWT access tokens
+- **4 bounded contexts** with a strictly layered architecture
+- **Standardized errors** across 400/401/403/404/409/422/500
+- **Docker Compose** with API, PostgreSQL, and pgAdmin
+
+## What I Learned
+
+1. **Security is unforgiving** — constant-time comparison, strict secret validation, and identical error messages matter
+2. **Layering pays off** — the shared `AppError` hierarchy keeps error handling consistent and testable
+3. **Testing against real HTTP** catches routing, middleware, and handler bugs that unit tests miss
+4. **DDD boundaries** make a growing codebase easier to reason about
+
+The roadmap continues with refresh tokens, RBAC permission checks, an event-driven order pipeline (RabbitMQ/Kafka) with DLQ and retry logic, CQRS, and chaos engineering resilience tests.
