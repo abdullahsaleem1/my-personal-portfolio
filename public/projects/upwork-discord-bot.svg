@@ -1,0 +1,52 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Upwork Discord Job Bot">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#141414" />
+      <stop offset="100%" stop-color="#222222" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffbd39" />
+      <stop offset="100%" stop-color="#ffd97a" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)" />
+
+  <!-- chat window -->
+  <rect x="180" y="110" width="840" height="455" rx="18" fill="#161616" stroke="#2e2e2e" stroke-width="2" />
+
+  <!-- chat header -->
+  <rect x="180" y="110" width="840" height="60" rx="18" fill="#202020" />
+  <rect x="180" y="140" width="840" height="30" fill="#202020" />
+  <circle cx="225" cy="140" r="14" fill="#ffbd39" />
+  <text x="260" y="146" font-size="20" font-family="sans-serif" font-weight="600" fill="#fff">Upwork Job Feed</text>
+  <text x="980" y="146" font-size="18" font-family="monospace" fill="#7fd07f">● LIVE</text>
+
+  <!-- bot message -->
+  <rect x="220" y="210" width="460" height="150" rx="14" fill="#2a2416" stroke="#ffbd39" stroke-width="2" />
+  <circle cx="250" cy="240" r="12" fill="#ffbd39" />
+  <text x="276" y="246" font-size="18" font-family="sans-serif" font-weight="700" fill="#ffbd39">JobBot</text>
+  <text x="250" y="278" font-size="20" font-family="monospace" font-weight="700" fill="#fff">Python Developer</text>
+  <text x="250" y="306" font-size="16" font-family="monospace" fill="#aaa">$35/hr · Full-time · Remote</text>
+  <text x="250" y="334" font-size="16" font-family="monospace" fill="#aaa">Budget $1,500 · Posted 4s ago</text>
+  <circle cx="656" cy="334" r="9" fill="#7fd07f" />
+  <text x="682" y="339" font-size="15" font-family="monospace" fill="#7fd07f">New</text>
+
+  <!-- user reply -->
+  <rect x="560" y="400" width="340" height="52" rx="14" fill="#1f2833" stroke="#2e3b4e" stroke-width="2" />
+  <text x="600" y="432" font-size="17" font-family="sans-serif" fill="#d3d3d3">Applied via API ✓</text>
+
+  <!-- lightning / low latency -->
+  <g transform="translate(990 320)">
+    <path d="M 18 0 L 2 40 L 16 40 L 8 66 L 34 24 L 20 24 L 30 0 Z" fill="#ffbd39" />
+  </g>
+  <text x="1030" y="360" font-size="17" font-family="monospace" fill="#888">&lt;5s</text>
+  <text x="1030" y="386" font-size="15" font-family="monospace" fill="#666">latency</text>
+
+  <!-- duplicate shield -->
+  <g transform="translate(985 470)">
+    <path d="M 25 0 L 46 12 L 46 36 C 46 52 36 62 25 68 C 14 62 4 52 4 36 L 4 12 Z" fill="none" stroke="#7fd07f" stroke-width="4" />
+    <path d="M 14 34 L 22 42 L 36 26" fill="none" stroke="#7fd07f" stroke-width="4" stroke-linecap="round" />
+  </g>
+  <text x="1060" y="505" font-size="15" font-family="monospace" fill="#7fd07f">0 duplicates</text>
+</svg>

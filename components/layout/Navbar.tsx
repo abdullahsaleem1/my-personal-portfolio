@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import ASLogo from '@/components/common/ASLogo';
+import Link from 'next/link';
 import { navLinks } from '@/lib/portfolio-data';
 
 export default function Navbar() {
@@ -16,70 +16,90 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div
-      className={`sticky top-0 z-50 transition-all duration-1000 ${
-        scrolled
-          ? 'bg-soft-white border-b border-gray-300'
-          : 'bg-white border-white'
-      }`}
-    >
-      <div className="navbar flex justify-between mx-auto content px-4">
-        <div className="flex items-center justify-between">
-          {/* Mobile menu button */}
-          <div className="lg:hidden">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-heading"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
+    <div className="fixed top-3 sm:top-5 inset-x-0 z-50 px-3 sm:px-6">
+      <div className="content mx-auto">
+        <div
+          className={`flex justify-between items-center rounded-full transition-all duration-500 px-4 sm:px-7 py-2.5 sm:py-3 ${
+            scrolled
+              ? 'bg-white shadow-[0px_15px_40px_-15px_rgba(0,0,0,0.25)]'
+              : 'bg-black/85 backdrop-blur-sm'
+          }`}
+        >
+          {/* Brand */}
+          <Link
+            href="/#home"
+            className={`font-semibold text-xl sm:text-2xl tracking-tight no-underline ${
+              scrolled ? 'text-black' : 'text-white'
+            }`}
+          >
+            Abdullah <span className="text-clark-gold">Saleem</span>
+          </Link>
 
-          {/* Logo */}
-          <a href="/#home" className="flex items-center border-0 lg:ps-5 no-underline">
-            <ASLogo className="h-8 w-8 sm:h-10 sm:w-10" />
-            <p className="text-2xl sm:text-[32px] my-auto ms-[12px] font-semibold text-heading">
-              Abdullah
-            </p>
-          </a>
-        </div>
-
-        <div className="lg:flex items-center">
           {/* Desktop Nav */}
-          <ul className="hidden lg:flex text-[16px] font-medium shrink-0 list-none m-0">
+          <ul className="hidden lg:flex items-center text-[16px] font-medium shrink-0 list-none m-0">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="group relative inline-block px-4 py-2 mx-0.5 rounded-md text-heading no-underline transition-colors duration-300 hover:text-picto-primary"
+                  className={`group relative inline-block px-4 py-2 mx-0.5 rounded-md no-underline transition-colors duration-300 ${
+                    scrolled
+                      ? 'text-black hover:text-clark-gold-dark'
+                      : 'text-white hover:text-clark-gold'
+                  }`}
                 >
                   {link.label}
-                  <span className="absolute left-4 right-4 -bottom-0.5 h-0.5 bg-picto-primary rounded-full origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+                  <span
+                    className={`absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-full origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ${
+                      scrolled ? 'bg-clark-gold-dark' : 'bg-clark-gold'
+                    }`}
+                  />
                 </a>
               </li>
             ))}
           </ul>
-        </div>
-      </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-gray-200 py-4 px-6 animate-fade-in">
-          <div className="flex flex-col gap-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-3 text-heading hover:text-picto-primary hover:bg-picto-primary/5 rounded-md font-medium no-underline"
-              >
-                {link.label}
-              </a>
-            ))}
+          {/* Mobile menu button */}
+          <div className="lg:hidden">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <X className={`h-6 w-6 ${scrolled ? 'text-black' : 'text-white'}`} />
+              ) : (
+                <Menu className={`h-6 w-6 ${scrolled ? 'text-black' : 'text-white'}`} />
+              )}
+            </button>
           </div>
         </div>
-      )}
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div
+            className={`lg:hidden mt-2 rounded-2xl py-4 px-6 animate-fade-in shadow-lg ${
+              scrolled ? 'bg-white border border-gray-200' : 'bg-black/95'
+            }`}
+          >
+            <div className="flex flex-col gap-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`px-4 py-3 rounded-md font-medium no-underline ${
+                    scrolled
+                      ? 'text-black hover:text-clark-gold-dark hover:bg-clark-gold/10'
+                      : 'text-white hover:text-clark-gold hover:bg-clark-gold/10'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

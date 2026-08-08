@@ -18,8 +18,8 @@ export default function ASLogo({ size = 'md', variant = 'color', className }: { 
     >
       <defs>
         <linearGradient id={gradientId} x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor={variant === 'white' ? 'transparent' : '#6C3CE1'} />
-          <stop offset="100%" stopColor={variant === 'white' ? 'transparent' : '#4F2DA8'} />
+          <stop offset="0%" stopColor={variant === 'white' ? 'transparent' : '#ffbd39'} />
+          <stop offset="100%" stopColor={variant === 'white' ? 'transparent' : '#e6a300'} />
         </linearGradient>
       </defs>
 
@@ -45,7 +45,7 @@ export default function ASLogo({ size = 'md', variant = 'color', className }: { 
         letterSpacing="-1"
       >
         <tspan fill="white">A</tspan>
-        <tspan fill={variant === 'white' ? '#E2E8F0' : '#E8DEFF'}>S</tspan>
+        <tspan fill={variant === 'white' ? '#E2E8F0' : '#fff3d6'}>S</tspan>
       </text>
     </svg>
   );

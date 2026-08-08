@@ -1,11 +1,11 @@
 import Navbar from '@/components/layout/Navbar';
 import Hero from '@/components/sections/Hero';
 import Profile from '@/components/sections/Profile';
-import Projects from '@/components/sections/Projects';
+import Resume from '@/components/sections/Resume';
 import WorkProcess from '@/components/sections/WorkProcess';
 import Skills from '@/components/sections/Skills';
-import Experience from '@/components/sections/Experience';
-import Education from '@/components/sections/Education';
+import Projects from '@/components/sections/Projects';
+import HireMe from '@/components/sections/HireMe';
 import Contact from '@/components/sections/Contact';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/effects/ScrollToTop';
@@ -15,22 +15,16 @@ export default function Home() {
     <div className="relative">
       <Navbar />
       <main>
-        <div className="introduction-profile-background">
-          <div className="content pb-20 lg:pb-28">
-            <Hero />
-            <Profile />
-          </div>
-        </div>
-        <Projects />
+        <Hero />
+        <Profile />
+        <Resume />
         <WorkProcess />
         <Skills />
-        <Experience />
-        <Education />
+        <Projects />
+        <HireMe />
         <Contact />
       </main>
-      <div className="bg-dark-bg">
-        <Footer />
-      </div>
+      <Footer />
       <ScrollToTop />
     </div>
   );

@@ -3,27 +3,31 @@
 
 /* ============================================
    ABDULLAH SALEEM PORTFOLIO
-   Professional Software Engineer Design System
+   "Clark" theme design system (gold / dark)
    ============================================ */
 
 @theme {
-  /* Primary — refined indigo-violet, more professional than bright purple */
-  --color-picto-primary: #6C3CE1;
-  --color-picto-primary-dark: #4F2DA8;
-  --color-picto-primary-light: #E8DEFF;
+  /* Primary — signature gold */
+  --color-clark-gold: #ffbd39;
+  --color-clark-gold-dark: #e6a300;
 
   /* Surfaces */
-  --color-soft-white: #F5F6F8;
-  --color-soft-dark: #6B7280;
-  --color-dark-bg: #1E293B;
+  --color-clark-dark: #191919;
+  --color-clark-black: #000000;
+  --color-clark-light: #f8f9fa;
+  --color-clark-gray: #666666;
 
-  /* Text — deeper, more authoritative */
-  --color-heading: #0F172A;
-  --color-body-text: #475569;
-  --color-card-border: #E2E8F0;
-
-  /* Accent — a subtle teal for secondary highlights */
-  --color-accent-teal: #14B8A6;
+  /* Legacy aliases so existing tokens keep working */
+  --color-picto-primary: #ffbd39;
+  --color-picto-primary-dark: #e6a300;
+  --color-picto-primary-light: #fff3d6;
+  --color-soft-white: #f8f9fa;
+  --color-soft-dark: #666666;
+  --color-dark-bg: #191919;
+  --color-heading: #000000;
+  --color-body-text: #666666;
+  --color-card-border: #e2e8f0;
+  --color-accent-teal: #ffbd39;
 }
 
 * {
@@ -39,8 +43,8 @@ html {
 }
 
 body {
-  font-family: 'Inter', 'Work Sans', system-ui, -apple-system, sans-serif;
-  color: #334155;
+  font-family: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
+  color: #666666;
   overflow-x: hidden;
   background: #ffffff;
 }
@@ -57,18 +61,295 @@ section {
   @apply max-w-[1320px] mx-auto w-full;
 }
 
-.section-title {
-  @apply md:font-bold text-3xl sm:text-4xl md:text-5xl font-semibold text-heading tracking-tight;
-}
-
 .center {
   @apply flex justify-center items-center;
 }
 
+/* Clark pill buttons */
+.btn-clark,
+.btn-clark-gold,
+.btn-clark-outline-white,
+.btn-clark-outline-dark {
+  @apply inline-block rounded-full uppercase tracking-[2px] font-semibold text-xs
+  shadow-[0px_24px_36px_-11px_rgba(0,0,0,0.09)] no-underline cursor-pointer;
+}
+
+.btn-clark-gold {
+  @apply bg-clark-gold text-black border border-clark-gold;
+}
+
+.btn-clark-gold:hover {
+  @apply bg-clark-gold-dark border-clark-gold-dark text-black;
+}
+
+.btn-clark-outline-white {
+  @apply bg-transparent text-white border-2 border-white;
+}
+
+.btn-clark-outline-white:hover {
+  @apply bg-white text-black;
+}
+
+.btn-clark-outline-dark {
+  @apply bg-transparent text-black border-2 border-black;
+}
+
+.btn-clark-outline-dark:hover {
+  @apply bg-black text-white;
+}
+
+/* Legacy alias — used by project detail pages */
 .btn-primary-picto {
-  @apply bg-gradient-to-r from-picto-primary to-[#4F46E5] border-0 text-white
-  hover:shadow-lg hover:shadow-picto-primary/25 hover:scale-[1.02]
-  transition-all duration-500 cursor-pointer;
+  @apply inline-block rounded-full uppercase tracking-[2px] font-semibold text-xs
+  shadow-[0px_24px_36px_-11px_rgba(0,0,0,0.09)] no-underline cursor-pointer
+  bg-clark-gold text-black border border-clark-gold
+  hover:bg-clark-gold-dark hover:shadow-lg hover:shadow-clark-gold/25 hover:scale-[1.02];
+}
+
+/* ============================================
+   SECTION HEADINGS (Clark style)
+   ============================================ */
+
+.heading-clark {
+  position: relative;
+}
+
+.heading-clark .subheading {
+  @apply block text-xs uppercase tracking-[3px] font-medium mb-1;
+}
+
+.heading-clark .big-word {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: clamp(56px, 7.5vw, 110px);
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.heading-clark-center .big-word {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.heading-clark .title {
+  @apply text-4xl sm:text-5xl font-bold tracking-tight relative z-10;
+}
+
+.heading-clark-on-dark {
+  color: #ffffff;
+}
+
+.heading-clark-on-dark .subheading {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.heading-clark-on-dark .big-word {
+  color: rgba(255, 255, 255, 0.08);
+}
+
+.heading-clark-on-dark .title {
+  color: #ffffff;
+}
+
+.heading-clark-on-dark p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.heading-clark-on-light {
+  color: #000000;
+}
+
+.heading-clark-on-light .subheading {
+  color: #000000;
+}
+
+.heading-clark-on-light .big-word {
+  color: rgba(0, 0, 0, 0.06);
+}
+
+.heading-clark-on-light .title {
+  color: #000000;
+}
+
+.heading-clark-on-light p {
+  color: #666666;
+}
+
+/* ============================================
+   RESUME / TIMELINE CARDS (Clark style)
+   ============================================ */
+
+.resume-card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1.75rem;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.resume-card .date {
+  font-weight: 900;
+  font-size: 26px;
+  color: var(--color-clark-gold);
+  line-height: 1.2;
+}
+
+.resume-card h3 {
+  font-size: 20px;
+  color: #ffffff;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.resume-card .position {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.resume-card p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   PROGRESS BARS (Clark style)
+   ============================================ */
+
+.progress-wrap {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.progress-wrap h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.clark-progress {
+  position: relative;
+  height: 10px;
+  border-radius: 2px;
+  background: #1a1a1a;
+  overflow: visible;
+}
+
+.clark-progress .bar {
+  position: relative;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--color-clark-gold);
+}
+
+.clark-progress .percent {
+  position: absolute;
+  top: -34px;
+  right: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1;
+}
+
+/* ============================================
+   SERVICES CARDS (Clark style)
+   ============================================ */
+
+.service-card {
+  display: block;
+  margin-bottom: 30px;
+  padding: 2em;
+  background: #ffffff;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0px 20px 69px -27px rgba(0, 0, 0, 0.17);
+}
+
+.service-card:hover {
+  box-shadow: 0px 20px 69px -27px rgba(0, 0, 0, 0.35);
+}
+
+.service-card .icon {
+  display: block;
+  margin-bottom: 30px;
+  color: var(--color-clark-gold);
+}
+
+.service-card h3 {
+  position: relative;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #000000;
+  padding-bottom: 16px;
+}
+
+.service-card h3:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--color-clark-gold);
+  margin: 0 auto;
+}
+
+.service-card p {
+  color: #666666;
+}
+
+/* ============================================
+   PROJECT TILES (Clark style)
+   ============================================ */
+
+.project-tile {
+  position: relative;
+  width: 100%;
+  height: 285px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.project-tile .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.project-tile:hover .overlay {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.project-tile .overlay h3 a {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.project-tile .overlay span {
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
 }
 
 /* ============================================
@@ -76,16 +357,11 @@ section {
    ============================================ */
 
 .introduction-profile-background {
-  background:
-    radial-gradient(circle at 12% 100%, rgba(99, 102, 241, 0.08) 1% 5px, transparent 15%),
-    radial-gradient(circle at 95% -15%, rgba(139, 92, 246, 0.06) 5%, transparent 30%),
-    radial-gradient(circle at center right, rgba(20, 184, 166, 0.05) 2%, transparent 35%);
+  background: #ffffff;
 }
 
 .blog-background {
-  background:
-    radial-gradient(circle at -10% 0%, rgba(139, 92, 246, 0.06) 1%, transparent 25%),
-    radial-gradient(circle at 110% 30%, rgba(20, 184, 166, 0.04) 5%, transparent 25%);
+  background: #f8f9fa;
 }
 
 /* ============================================
@@ -93,7 +369,7 @@ section {
    ============================================ */
 
 .bg-highlight {
-  background: linear-gradient(to top, rgba(139, 92, 246, 0.15) 40%, transparent 40%);
+  background: linear-gradient(to top, rgba(255, 189, 57, 0.35) 40%, transparent 40%);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   padding-left: 3px;
@@ -105,8 +381,8 @@ section {
    ============================================ */
 
 .form-input-picto {
-  @apply w-full py-4 px-0 border-0 border-b-2 border-[#E2E8F0] bg-transparent text-heading text-base
-  focus:outline-none focus:border-picto-primary
+  @apply w-full py-4 px-0 border-0 border-b-2 border-[#e2e8f0] bg-transparent text-black text-base
+  focus:outline-none focus:border-clark-gold
   placeholder:text-soft-dark placeholder:text-base;
 }
 
@@ -120,16 +396,16 @@ section {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5F6F8;
+  background: #f8f9fa;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6C3CE1;
+  background: #ffbd39;
 }
 
 /* ============================================
@@ -137,13 +413,13 @@ section {
    ============================================ */
 
 ::selection {
-  background: #6C3CE1;
-  color: #fff;
+  background: #ffbd39;
+  color: #000;
 }
 
 ::-moz-selection {
-  background: #6C3CE1;
-  color: #fff;
+  background: #ffbd39;
+  color: #000;
 }
 
 /* ============================================
