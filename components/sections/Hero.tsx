@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { heroData, socialLinks } from '@/lib/portfolio-data';
-import { FaGithub, FaLinkedin, FaGlobe, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaGlobe, FaEnvelope, FaWhatsapp, FaFacebookF, FaInstagram } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,10 +11,13 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   linkedin: FaLinkedin,
   gmail: FaEnvelope,
   globe: FaGlobe,
+  whatsapp: FaWhatsapp,
+  facebook: FaFacebookF,
+  instagram: FaInstagram,
 };
 
 const informationSummaryData = [
-  { id: 1, title: 'Internship', description: 'BitBash' },
+  { id: 1, title: 'Internships', description: '2' },
   { id: 2, title: 'Projects Completed', description: '6+' },
   { id: 3, title: 'Technologies', description: '15+' },
 ];
@@ -69,7 +72,7 @@ export default function Hero() {
             {heroData.role}
           </h2>
           <p className="text-sm lg:text-base my-6 text-white/60 leading-relaxed max-w-xl">
-            based in Lahore, Pakistan. {heroData.summary}
+            Based in Lahore, Pakistan. {heroData.summary}
           </p>
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
             <Link

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { navLinks, socialLinks } from '@/lib/portfolio-data';
-import { FaGithub, FaLinkedin, FaGlobe, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaGlobe, FaEnvelope, FaWhatsapp, FaFacebookF, FaInstagram } from 'react-icons/fa';
 
 const copyrightYear = new Date().getFullYear();
 
@@ -9,6 +9,9 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   linkedin: FaLinkedin,
   gmail: FaEnvelope,
   globe: FaGlobe,
+  whatsapp: FaWhatsapp,
+  facebook: FaFacebookF,
+  instagram: FaInstagram,
 };
 
 export default function Footer() {

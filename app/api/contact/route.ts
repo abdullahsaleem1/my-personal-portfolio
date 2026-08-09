@@ -3,9 +3,9 @@ import { Resend } from 'resend';
 export async function POST(request: Request) {
   try {
     const apiKey = process.env.RESEND_API_KEY;
-    const fromEmail = process.env.RESEND_FROM_EMAIL;
+    const fromEmail = process.env.RESEND_FROM_EMAIL ?? 'onboarding@resend.dev';
 
-    if (!apiKey || !fromEmail) {
+    if (!apiKey) {
       return Response.json(
         { error: 'Missing email configuration' },
         { status: 500 }

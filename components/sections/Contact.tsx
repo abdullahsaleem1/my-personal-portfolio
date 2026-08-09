@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Phone } from 'lucide-react';
-import { FaGithub, FaLinkedin, FaGlobe, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaGlobe, FaEnvelope, FaWhatsapp, FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { contactData, socialLinks } from '@/lib/portfolio-data';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -11,6 +11,9 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   linkedin: FaLinkedin,
   gmail: FaEnvelope,
   globe: FaGlobe,
+  whatsapp: FaWhatsapp,
+  facebook: FaFacebookF,
+  instagram: FaInstagram,
 };
 
 const addressData = [
@@ -233,7 +236,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-clark-gold w-fit px-8 py-3 flex items-center gap-3 disabled:opacity-50"
+                  className="btn-clark-gold w-fit px-8 py-3 disabled:opacity-50"
                 >
                   {loading ? 'Sending...' : 'Send Message'}
                   <svg

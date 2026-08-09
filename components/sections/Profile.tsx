@@ -9,7 +9,7 @@ import { FaDownload } from 'react-icons/fa';
 const stats = [
   { value: '6+', label: 'Projects Completed' },
   { value: '15+', label: 'Technologies' },
-  { value: '1', label: 'Internship' },
+  { value: '2', label: 'Internships' },
 ];
 
 export default function Profile() {
@@ -53,7 +53,7 @@ export default function Profile() {
               <span className="big-word">About</span>
               <h2 className="title">About Me</h2>
               <p className="text-sm sm:text-base text-gray-500 mt-4 leading-relaxed max-w-xl">
-                Software Engineer building automation systems and full-stack applications.
+                Backend Engineer building automation systems and full-stack applications.
               </p>
             </div>
 
@@ -110,7 +110,7 @@ export default function Profile() {
               </a>
               {aboutData.resumeUrl && (
                 <Link
-                  className="btn-clark-outline-dark px-8 py-3 flex items-center gap-2"
+                  className="btn-clark-outline-dark px-8 py-3"
                   href={aboutData.resumeUrl}
                 >
                   <FaDownload /> Download CV
