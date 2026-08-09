@@ -31,6 +31,27 @@ export const socialLinks = [
     icon: 'gmail',
     color: '#EA4335',
   },
+  {
+    key: 'whatsapp',
+    label: 'WhatsApp',
+    href: 'https://wa.me/923259733970',
+    icon: 'whatsapp',
+    color: '#25D366',
+  },
+  {
+    key: 'facebook',
+    label: 'Facebook',
+    href: 'https://www.facebook.com/iam.abdullah.saleem',
+    icon: 'facebook',
+    color: '#1877F2',
+  },
+  {
+    key: 'instagram',
+    label: 'Instagram',
+    href: 'https://www.instagram.com/iam_abdullahsaleem/',
+    icon: 'instagram',
+    color: '#E4405F',
+  },
 ];
 
 export const heroData = {
@@ -38,7 +59,7 @@ export const heroData = {
   name: 'Abdullah Saleem',
   role: 'Software Engineer',
   summary:
-    'I build automation systems that process 100K+ data points and full-stack apps with real-time capabilities. Currently shipping my FYP — an AI-powered vehicle surveillance platform with ~85% ANPR accuracy.',
+    "Final-Semester Software Engineering Student Building Backend Systems and Automation Tools with Python. I've Reverse-Engineered private APIs, shipped Production Discord Bots, and Automated away ~80% of Manual Workflows — Currently working on my AI-Driven Vehicle Surveillance FYP.",
   primaryCta: { label: 'View Projects', href: '/#projects' },
   secondaryCta: { label: 'Download CV', href: '/resume/Abdullah_Saleem_CV.pdf' },
 };
@@ -46,15 +67,14 @@ export const heroData = {
 export const aboutData = {
   title: 'Who I Am',
   paragraphs: [
-    "I'm a Software Engineer proficient in a multi-language stack including Python, PHP, Java, JavaScript, and C++. I specialize in developing CRUD applications with Laravel and complex AI-integrated automation systems.",
-    "I have hands-on experience managing full-cycle data pipelines — from web scraping (HTTPX/Selenium) to relational database design (SQLite/SQL). I've collaborated with US-based clients to translate complex technical requirements into efficient, scalable software solutions.",
-    "Currently pursuing my BS in Software Engineering at the University of Lahore, I'm passionate about building robust backend systems, automation tools, and AI-powered applications that solve real-world problems.",
+    "I'm a Final-Semester Software Engineering student at The University of Lahore, focused on Building Backend Systems and Automation Tools with Python. I work across a Multi-Language stack - Python, JavaScript, Java, C++, and PHP — using frameworks like Flask, FastAPI, and Laravel to ship scalable, production-ready applications.",
+    "I've reverse-engineered private APIs and built production systems that run reliably at scale, including a Discord bot that monitors Upwork's job market with sub-5s latency and 100+ hours of stable uptime — cutting manual workflows down by ~80% through automation. I manage full-cycle data pipelines, from web scraping with HTTPX/Selenium to relational database design in SQLite, SQL, and MySQL.",
+    "Currently pursuing my BS in Software Engineering at the University of Lahore, I'm shipping my Final Year Project — an AI-driven vehicle verification and surveillance platform using React, Node.js, OpenCV, and TensorFlow — while expanding into Docker, CI/CD, and cloud fundamentals. I'm passionate about robust backend architecture, automation, and AI-powered applications that solve real-world problems, and I'm open to full-time Software Engineer roles.",
   ],
   profileImage: '/profile-placeholder.svg',
   resumeUrl: '/resume/Abdullah_Saleem_CV.pdf',
   highlights: [
-    { label: 'Internship', value: 'BitBash' },
-    { label: 'Projects', value: '6+' },
+    { label: 'Internships', value: 'Parallax Labs & BitBash' },
   ],
   facts: [
     { label: 'Location', value: 'Lahore, Pakistan' },
@@ -68,9 +88,9 @@ export const aboutData = {
   keySkills: [
     'Python',
     'Laravel',
-    'MERN Stack',
     'Flask',
     'REST APIs',
+    'GraphQL',
     'Web Scraping',
     'AI/ML',
     'Automation',
@@ -82,23 +102,23 @@ export const skillsData = {
   categories: [
     {
       name: 'Languages',
-      proficiency: 90,
+      proficiency: 80,
       skills: ['Python', 'JavaScript', 'PHP', 'Java', 'C / C++', 'HTML5 / CSS3'],
     },
     {
       name: 'Frameworks',
-      proficiency: 88,
+      proficiency: 80,
       skills: ['Laravel', 'Flask', 'React.js', 'Node.js', 'Express.js', 'Tailwind CSS', 'Bootstrap'],
     },
     {
       name: 'Databases',
-      proficiency: 80,
+      proficiency: 90,
       skills: ['MySQL', 'SQLite', 'MongoDB'],
     },
     {
       name: 'AI / ML',
       proficiency: 75,
-      skills: ['OpenCV', 'TensorFlow'],
+      skills: ['OpenCV', 'TensorFlow', 'NumPy', 'Pandas', 'Matplotlib',],
     },
     {
       name: 'Tools & APIs',
@@ -120,6 +140,21 @@ type ExperienceItem = {
 };
 
 export const experienceData: ExperienceItem[] = [
+  {
+    company: 'Parallax Labs',
+    position: 'Backend Developer Intern',
+    description:
+      'Working remotely on the Distributed Inventory & Order Management System — a production-grade FastAPI backend with Domain-Driven Design, event-driven processing, and containerized infrastructure.',
+    bullets: [
+      'Developing the Distributed Inventory & Order Management System with a production-grade FastAPI backend following Domain-Driven Design principles.',
+      'Building an event-driven order processing pipeline with CQRS, Redis rate limiting, and distributed tracing.',
+      'Implementing a from-scratch OAuth2.0/JWT authorization server and containerizing the system with Docker Compose.',
+    ],
+    startDate: '2026-01-01',
+    endDate: '',
+    current: true,
+    location: 'Remote',
+  },
   {
     company: 'BitBash',
     position: 'Software Engineer Intern',
@@ -148,7 +183,7 @@ export const educationData = [
     endDate: '2027-01-01',
     current: true,
     description:
-      'Maintained a 3.00 Cumulative GPA, achieving a peak 3.55 SGPA in latest coursework. Mastered core Software Engineering principles including SDLC methodologies, systems design, and database management. Developed technical proficiency through hands-on collaborative academic projects.',
+      'Maintained a 3.20 Cumulative GPA, achieving a peak 3.94 CGPA in latest coursework. Mastered core Software Engineering principles including SDLC methodologies, systems design, and database management. Developed technical proficiency through hands-on collaborative academic projects.',
   },
 ];
 

@@ -70,7 +70,7 @@ section {
 .btn-clark-gold,
 .btn-clark-outline-white,
 .btn-clark-outline-dark {
-  @apply inline-block rounded-full uppercase tracking-[2px] font-semibold text-xs
+  @apply inline-flex items-center justify-center gap-2 rounded-full uppercase tracking-[2px] font-semibold text-sm
   shadow-[0px_24px_36px_-11px_rgba(0,0,0,0.09)] no-underline cursor-pointer;
 }
 
