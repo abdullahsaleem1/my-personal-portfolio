@@ -43,7 +43,7 @@ html {
 }
 
 body {
-  font-family: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-poppins), 'Inter', system-ui, -apple-system, sans-serif;
   color: #666666;
   overflow-x: hidden;
   background: #ffffff;

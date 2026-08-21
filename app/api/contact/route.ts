@@ -1,5 +1,25 @@
 import { Resend } from 'resend';
 
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX = 3;
+
+const rateLimitStore = new Map<string, number[]>();
+
+function isRateLimited(key: string): boolean {
+  const now = Date.now();
+  const cutoff = now - RATE_LIMIT_WINDOW_MS;
+  const timestamps = (rateLimitStore.get(key) ?? []).filter((t) => t > cutoff);
+
+  if (timestamps.length >= RATE_LIMIT_MAX) {
+    rateLimitStore.set(key, timestamps);
+    return true;
+  }
+
+  timestamps.push(now);
+  rateLimitStore.set(key, timestamps);
+  return false;
+}
+
 export async function POST(request: Request) {
   try {
     const apiKey = process.env.RESEND_API_KEY;
@@ -12,10 +32,23 @@ export async function POST(request: Request) {
       );
     }
 
-    const resend = new Resend(apiKey);
-    const { name, email, subject, message } = await request.json();
+    const clientIp =
+      request.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
+      'unknown';
 
-    // Validate
+    if (isRateLimited(clientIp)) {
+      return Response.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
+    const { name, email, subject, message, website } = await request.json();
+
+    if (website) {
+      return Response.json({ success: true });
+    }
+
     if (!name || !email || !subject || !message) {
       return Response.json(
         { error: 'Missing required fields' },
@@ -23,7 +56,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Send email
+    const resend = new Resend(apiKey);
+
     const response = await resend.emails.send({
       from: fromEmail,
       to: 'iamabdullahsaleem1@gmail.com',

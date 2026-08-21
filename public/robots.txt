@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Sitemap: https://abdullahsaleem.dev/sitemap.xml
+Sitemap: https://abdullahsaleem.vercel.app/sitemap.xml

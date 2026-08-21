@@ -1,7 +1,16 @@
 import type { Metadata } from 'next';
+import { Poppins } from 'next/font/google';
+import Chatbot from '@/components/sections/Chatbot';
 import './globals.css';
 
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-poppins',
+});
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://abdullahsaleem.vercel.app'),
   title: {
     default: 'Abdullah Saleem — Software Engineer',
     template: '%s | Abdullah Saleem',
@@ -49,17 +58,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={poppins.variable}>
       <body>
         {children}
+        <Chatbot />
       </body>
     </html>
   );

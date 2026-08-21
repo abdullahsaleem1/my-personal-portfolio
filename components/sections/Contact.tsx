@@ -75,6 +75,7 @@ export default function Contact() {
     email: '',
     subject: contactData.subjects[0],
     message: '',
+    website: '',
   });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -108,6 +109,7 @@ export default function Contact() {
           email: '',
           subject: contactData.subjects[0],
           message: '',
+          website: '',
         });
         setTimeout(() => setSubmitted(false), 5000);
       } else {
@@ -179,8 +181,25 @@ export default function Contact() {
             {/* Right side - Form */}
             <div>
               <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleChange}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
+                <label htmlFor="name" className="sr-only">
+                  Name
+                </label>
                 <input
                   type="text"
+                  id="name"
                   name="name"
                   placeholder="Name*"
                   value={formData.name}
@@ -188,8 +207,12 @@ export default function Contact() {
                   className="form-input-picto"
                   required
                 />
+                <label htmlFor="email" className="sr-only">
+                  Email
+                </label>
                 <input
                   type="email"
+                  id="email"
                   name="email"
                   placeholder="Email*"
                   value={formData.email}
@@ -198,7 +221,11 @@ export default function Contact() {
                   required
                 />
 
+                <label htmlFor="subject" className="sr-only">
+                  Subject
+                </label>
                 <select
+                  id="subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
@@ -211,7 +238,11 @@ export default function Contact() {
                   ))}
                 </select>
 
+                <label htmlFor="message" className="sr-only">
+                  Message
+                </label>
                 <textarea
+                  id="message"
                   name="message"
                   placeholder="Message*"
                   value={formData.message}
