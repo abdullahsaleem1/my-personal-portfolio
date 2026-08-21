@@ -15,6 +15,7 @@ npm install
 ```env
 RESEND_API_KEY=your_resend_key
 RESEND_FROM_EMAIL=iamabdullahsaleem1@gmail.com
+GROQ_API_KEY=your_groq_key
 ```
 
 3. Run the dev server:
@@ -125,6 +126,36 @@ Simple maintenance plan:
 - Add a project filter or tags
 - Add analytics (Plausible, PostHog, or GA4)
 - Add an admin panel later if needed
+
+## AI Chatbot
+
+A floating chat widget (bottom-right bubble) answers visitor questions about Abdullah's background, skills, experience, and projects. It is powered by the Groq API (free tier) and grounded strictly in `lib/portfolio-data.ts` + `content/projects/*.mdx` — it will not answer anything outside that scope.
+
+### Setup
+
+1. Get a free API key at https://console.groq.com/keys
+2. Locally: add `GROQ_API_KEY=your_groq_key` to `.env.local` and restart the dev server.
+3. On Vercel: Project Settings → Environment Variables → add `GROQ_API_KEY` (Production, Preview, and Development), then redeploy.
+
+The endpoint is rate-limited (8 messages/IP/minute) and caps output tokens per request to protect the free-tier quota. The in-memory limiter resets on redeploy; swap in Upstash Redis if you need persistence.
+
+### POST /api/chat
+
+Request body:
+
+```json
+{
+	"messages": [
+		{ "role": "user", "content": "What stack does Abdullah use?" }
+	]
+}
+```
+
+Success response: streamed plain text (`text/plain`). Error responses are JSON:
+
+```json
+{ "error": "Too many messages. Please wait a moment and try again." }
+```
 
 ## Deploy
 

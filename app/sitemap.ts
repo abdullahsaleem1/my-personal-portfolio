@@ -1,11 +1,13 @@
 import { MetadataRoute } from 'next';
 import { getAllProjects } from '@/lib/projects';
 
+const BASE_URL = 'https://abdullahsaleem.vercel.app';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const projects = getAllProjects();
 
   const projectRoutes = projects.map((project) => ({
-    url: `https://abdullahsaleem.dev/projects/${project.slug}`,
+    url: `${BASE_URL}/projects/${project.slug}`,
     lastModified: new Date(project.date),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
@@ -13,31 +15,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: 'https://abdullahsaleem.dev',
+      url: BASE_URL,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 1,
     },
     {
-      url: 'https://abdullahsaleem.dev/about',
+      url: `${BASE_URL}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
-      url: 'https://abdullahsaleem.dev/projects',
+      url: `${BASE_URL}/projects`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
-      url: 'https://abdullahsaleem.dev/blog',
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    },
-    {
-      url: 'https://abdullahsaleem.dev/contact',
+      url: `${BASE_URL}/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
