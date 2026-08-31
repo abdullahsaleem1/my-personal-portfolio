@@ -4,13 +4,13 @@ import { useEffect, useState } from 'react';
 import { ChevronUp } from 'lucide-react';
 
 export default function ScrollToTop() {
-  const [position, setPosition] = useState(0);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setPosition(window.scrollY);
+      setVisible(window.scrollY > 200);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -19,16 +19,16 @@ export default function ScrollToTop() {
   };
 
   return (
-    <div className="flex justify-end relative sm:me-10 z-10 transition-all">
-      <button
-        onClick={scrollToTop}
-        className={`fixed bottom-10 me-5 w-10 h-10 sm:w-[50px] sm:h-[50px] lg:w-[60px] lg:h-[60px] flex justify-center items-center rounded-full transition delay-150 duration-500 ease-in-out hover:scale-120 cursor-pointer bg-picto-primary hover:bg-picto-primary-dark text-white ${
-          position < 200 ? 'scale-0' : ''
-        }`}
-        aria-label="Scroll to top"
-      >
-        <ChevronUp className="w-6 h-6 lg:w-8 lg:h-8" />
-      </button>
-    </div>
+    <button
+      onClick={scrollToTop}
+      className={`fixed bottom-6 left-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-picto-primary text-white shadow-lg shadow-picto-primary/25 transition-all duration-300 hover:bg-picto-primary-dark hover:scale-110 cursor-pointer ${
+        visible
+          ? 'translate-y-0 opacity-100'
+          : 'translate-y-4 opacity-0 pointer-events-none'
+      }`}
+      aria-label="Scroll to top"
+    >
+      <ChevronUp className="h-6 w-6" />
+    </button>
   );
 }
